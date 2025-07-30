@@ -2,9 +2,118 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Собери Комп Сам</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2 {
+      margin: 0 0 1rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0,255,255,0.7);
+    }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    p, li { font-size: 1.1rem; }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, #003973 0%, #e5e5be 100%);
+      text-align: center;
+      padding: 4rem 0;
+      animation: fadeIn 2s ease-out;
+    }
+    .hero h1 {
+      animation: slideDown 1s ease-out forwards;
+      opacity: 0;
+    }
+    .hero p {
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+    }
+    .btn {
+      background: #ff0066;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #ff3385;
+    }
+    .section {
+      padding: 2rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: #111;
+      font-size: 0.9rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Добро пожаловать на курс «Собери Комп Сам»!</h1>
+  <header class="hero">
+    <div class="container">
+      <h1>Собери Комп Сам</h1>
+      <p>Курс по сборке и пониманию компьютеров для детей 9–16 лет</p>
+      <a href="#" class="btn">Записаться на курс</a>
+    </div>
+  </header>
+
+  <section class="section" id="learn">
+    <div class="container">
+      <h2>Чему ты научишься</h2>
+      <ul>
+        <li>Собирать ПК из комплектующих</li>
+        <li>Разбираться в процессорах, видеокартах, материнках</li>
+        <li>Работать с BIOS и Windows</li>
+        <li>Устанавливать программы и настраивать систему</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="schedule">
+    <div class="container">
+      <h2>Расписание курса</h2>
+      <ol>
+        <li>Занятие 1: Что внутри компьютера?</li>
+        <li>Занятие 2: Собираем компьютер шаг за шагом</li>
+        <li>Занятие 3: Включение, BIOS и установка Windows</li>
+        <li>Занятие 4: Настройка и оптимизация</li>
+        <li>Занятие 5: Мини-проект: собираем ПК сами</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Собери Комп Сам. Все права защищены.</p>
+      <p>Контакты: <a href="mailto:hello@soberi-komp.ru" style="color: #ff0066;">hello@soberi-komp.ru</a></p>
+    </div>
+  </footer>
 </body>
 </html>
