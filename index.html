@@ -11,12 +11,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
-  <link rel="stylesheet" href="css/style.css?v=20260506j">
+  <link rel="stylesheet" href="css/style.css?v=20260507f">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-content">
       <a href="#" class="logo" aria-label="На главную">
-        <img src="assets/icon-no-bg.png" alt="Собери КОМП Сам" class="nav-logo-icon">
+        <picture><source srcset="assets/icon-no-bg.avif" type="image/avif"><source srcset="assets/icon-no-bg.webp" type="image/webp"><img src="assets/icon-no-bg.png" alt="Собери КОМП Сам" class="nav-logo-icon"></picture>
       </a>
       <ul class="nav-links">
         <li><a href="#lesson">Пробный урок</a></li>
@@ -70,7 +70,8 @@
     <div class="hero-video-band">
       <div class="hero-video-frame">
         <video class="hero-video" autoplay loop muted playsinline preload="auto"
-               poster="assets/icon-no-bg.png">
+               width="1600" height="900"
+               poster="assets/icon-no-bg.webp">
           <source src="assets/video/hero_main.webm" type="video/webm">
           <source src="assets/video/hero_main.mp4" type="video/mp4">
         </video>
@@ -265,7 +266,7 @@
         <div class="game-stage" id="gameStage">
           <aside class="game-parts" id="gameParts" aria-label="Компоненты ПК">
             <div class="game-part" data-part="cpu" data-name="Процессор">
-              <div class="game-part-icon"><img src="assets/ai/comp_cpu.png?v=20260506j" alt="CPU"></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_cpu.avif?v=20260507f" type="image/avif"><source srcset="assets/ai/comp_cpu.webp?v=20260507f" type="image/webp"><img src="assets/ai/comp_cpu.png?v=20260507f" alt="CPU"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Процессор</span>
                 <span class="game-part-hint">CPU</span>
@@ -273,7 +274,7 @@
             </div>
 
             <div class="game-part" data-part="cooler" data-name="Кулер">
-              <div class="game-part-icon"><img src="assets/ai/comp_cooler.png?v=20260506j" alt="Кулер"></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_cooler.avif?v=20260507f" type="image/avif"><source srcset="assets/ai/comp_cooler.webp?v=20260507f" type="image/webp"><img src="assets/ai/comp_cooler.png?v=20260507f" alt="Кулер"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Кулер</span>
                 <span class="game-part-hint">CPU Fan</span>
@@ -281,7 +282,7 @@
             </div>
 
             <div class="game-part" data-part="ram" data-name="Память">
-              <div class="game-part-icon"><img src="assets/ai/comp_ram.png?v=20260506j" alt="RAM"></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_ram.avif?v=20260507f" type="image/avif"><source srcset="assets/ai/comp_ram.webp?v=20260507f" type="image/webp"><img src="assets/ai/comp_ram.png?v=20260507f" alt="RAM"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Память</span>
                 <span class="game-part-hint">RAM</span>
@@ -289,7 +290,7 @@
             </div>
 
             <div class="game-part" data-part="gpu" data-name="Видеокарта">
-              <div class="game-part-icon"><img src="assets/ai/comp_gpu.png?v=20260506j" alt="GPU"></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_gpu.avif?v=20260507f" type="image/avif"><source srcset="assets/ai/comp_gpu.webp?v=20260507f" type="image/webp"><img src="assets/ai/comp_gpu.png?v=20260507f" alt="GPU"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Видеокарта</span>
                 <span class="game-part-hint">RTX 5090</span>
@@ -297,7 +298,7 @@
             </div>
 
             <div class="game-part" data-part="psu" data-name="Питание">
-              <div class="game-part-icon"><img src="assets/ai/comp_psu.png?v=20260506j" alt="PSU"></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_psu.avif?v=20260507f" type="image/avif"><source srcset="assets/ai/comp_psu.webp?v=20260507f" type="image/webp"><img src="assets/ai/comp_psu.png?v=20260507f" alt="PSU"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Питание</span>
                 <span class="game-part-hint">PSU</span>
@@ -307,7 +308,7 @@
 
           <div class="game-board-col">
             <div class="game-board" id="gameBoard" data-zones="assets/ai/zones.json">
-              <img class="game-board-photo" src="assets/ai/game_board.png?v=20260506j" alt="Материнская плата ASUS ROG Strix" aria-hidden="true">
+              <picture><source srcset="assets/ai/game_board.avif?v=20260507f" type="image/avif"><source srcset="assets/ai/game_board.webp?v=20260507f" type="image/webp"><img class="game-board-photo" src="assets/ai/game_board.png?v=20260507f" alt="Материнская плата ASUS ROG Strix" aria-hidden="true"></picture>
               <svg class="game-board-overlay" id="gameBoardOverlay" preserveAspectRatio="none" aria-hidden="true"></svg>
               <script type="application/json" id="zones-data">
 {"image":"game_board_v6.png","image_width_px":799,"image_height_px":972,"annotated_at":"2026-05-06T08:27:05.977Z","zones":[{"id":"cpu_socket","accepts":["cpu"],"polygon":[[348,198],[515,198],[519,375],[351,373],[347,197]]},{"id":"ram_slot_1","accepts":["ram"],"polygon":[[572,56],[573,501],[693,499],[694,58],[571,55]]},{"id":"pcie_x16","accepts":["gpu"],"polygon":[[141,557],[141,606],[495,609],[491,554],[139,556]]},{"id":"atx_24pin","accepts":["psu"],"polygon":[[737,188],[738,363],[781,362],[777,188],[736,186]]},{"id":"cpu_cooler","accepts":["cooler"],"polygon":[[313,410],[317,179],[541,180],[544,407],[313,407]]}]}
@@ -483,7 +484,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-info">
-          <img src="assets/icon-no-bg.png" alt="" style="width:40px;height:40px;opacity:.8;">
+          <picture><source srcset="assets/icon-no-bg.avif" type="image/avif"><source srcset="assets/icon-no-bg.webp" type="image/webp"><img src="assets/icon-no-bg.png" alt="" style="width:40px;height:40px;opacity:.8;"></picture>
           <div class="footer-c">© «Собери КОМП Сам!» с 2025 года • Ставрополь • Курсы сборки и ремонта ПК для детей 7–17 лет</div>
         </div>
         <div class="footer-l">
@@ -493,6 +494,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260506j"></script>
+  <script src="js/main.js?v=20260507f"></script>
 </body>
 </html>

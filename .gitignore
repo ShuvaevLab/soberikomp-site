@@ -20,3 +20,4 @@ __pycache__/
 # Session/test artifacts that may be created in this dir during dev
 .playwright-mcp/
 *.log
+_originals_pre_birefnet/
