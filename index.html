@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Курсы сборки ПК для детей в Ставрополе | «Собери КОМП Сам!»</title>
+  <meta name="description" content="Практическое обучение сборке, настройке и ремонту ПК для детей 7–17 лет. Ребёнок сам соберёт компьютер. Ставрополь, ТЦ «Милан». Бесплатный пробный урок.">
+  <link rel="icon" type="image/png" href="assets/icon-no-bg.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css?v=20260506j">
+</head>
+<body>
+
+  <canvas id="techCanvas" aria-hidden="true"></canvas>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo" aria-label="На главную">
+        <img src="assets/icon-no-bg.png" alt="Собери КОМП Сам" class="nav-logo-icon">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#lesson">Пробный урок</a></li>
+        <li><a href="#hooks">Почему мы</a></li>
+        <li><a href="#game">Собери ПК</a></li>
+        <li><a href="#products">Форматы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-wrapper" id="themeToggleWrap" title="Сменить тему" aria-label="Переключить тему">
+          <span class="theme-label" aria-hidden="true">🌙</span>
+          <div class="theme-toggle" id="themeToggle"></div>
+          <span class="theme-label" aria-hidden="true">☀️</span>
+        </button>
+        <a href="tel:+79034456444" class="btn btn-primary d-none-sm">
+          <i data-lucide="phone"></i> Позвонить
+        </a>
+        <button class="burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#lesson" class="mobile-link"><i data-lucide="gift"></i> Пробный урок</a>
+    <a href="#hooks" class="mobile-link"><i data-lucide="help-circle"></i> Почему мы</a>
+    <a href="#game" class="mobile-link"><i data-lucide="gamepad-2"></i> Собери ПК</a>
+    <a href="#products" class="mobile-link"><i data-lucide="layers"></i> Форматы</a>
+    <a href="#contacts" class="mobile-link"><i data-lucide="map-pin"></i> Контакты</a>
+    <a href="tel:+79034456444" class="btn btn-primary" style="justify-content:center;margin-top:10px;">
+      <i data-lucide="phone"></i> Позвонить
+    </a>
+  </div>
+
+  <header class="hero" id="hero">
+    <div class="hero-logo-band">
+      <img src="assets/logo-wide.svg" alt="Собери КОМП Сам!" class="hero-logo-img">
+    </div>
+
+    <div class="hero-video-band">
+      <div class="hero-video-frame">
+        <video class="hero-video" autoplay loop muted playsinline preload="auto"
+               poster="assets/icon-no-bg.png">
+          <source src="assets/video/hero_main.webm" type="video/webm">
+          <source src="assets/video/hero_main.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="container hero-meta">
+      <h1 class="hero-headline">
+        Ребёнок соберёт <span class="text-gradient">компьютер</span> своими руками —
+        <span class="text-gradient-blue">приведите и убедитесь сами</span>
+      </h1>
+
+      <div class="hero-meta-grid">
+        <div class="hero-meta-text">
+          <a href="#contacts" class="badge glow-blue badge-link" aria-label="Показать на карте">📍 Ставрополь • ТЦ «Милан» • 2 этаж</a>
+          <p class="hero-subtitle">
+            Первый и единственный курс в России, где дети 7–17 лет работают с реальным железом:
+            собирают, настраивают, чинят ПК. Живая мастерская — с реальными задачами и результатом.
+          </p>
+          <div class="hero-actions">
+            <a href="tel:+79034456444" class="btn btn-primary btn-glow">
+              <i data-lucide="gift"></i> Бесплатный пробный урок
+            </a>
+            <a href="tel:+79034456444" class="btn btn-outline">
+              <i data-lucide="phone-call"></i> 8-903-44-56-444
+            </a>
+            <a href="https://t.me/buildcompyourself" target="_blank" rel="noopener" class="btn btn-outline">
+              <i data-lucide="send"></i> Telegram
+            </a>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-num">27+</span><span class="stat-lbl">опыт преподавателя</span></div>
+          <div class="stat-item"><span class="stat-num">7-17</span><span class="stat-lbl">возраст ребят</span></div>
+          <div class="stat-item"><span class="stat-num">≤ 6</span><span class="stat-lbl">детей в группе</span></div>
+          <a href="tel:+79034456444" class="stat-item is-promo" aria-label="Записаться на бесплатный пробный урок">
+            <span class="promo-spark" aria-hidden="true"></span>
+            <span class="stat-num">0 ₽</span>
+            <span class="stat-lbl">пробный урок в подарок</span>
+            <span class="promo-cta"><i data-lucide="phone-call"></i> жмите — записать</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section-tight" id="lesson">
+    <div class="container">
+      <div class="lesson-strip glass-card gs-reveal">
+        <div class="lesson-pill">Бесплатно</div>
+        <h2>Открытый <span class="text-gradient">пробный</span> урок</h2>
+        <div class="lesson-sched">Суббота и Воскресенье, 14:00 – 15:00</div>
+        <div class="lesson-features">
+          <div class="lesson-feat"><div class="feat-icon glow-blue"><i data-lucide="clock"></i></div> 60 минут</div>
+          <div class="lesson-feat"><div class="feat-icon glow-pink"><i data-lucide="clipboard-list"></i></div> По записи</div>
+          <div class="lesson-feat"><div class="feat-icon glow-cyan"><i data-lucide="wrench"></i></div> Ребёнок сам запустит ПК</div>
+          <div class="lesson-feat"><div class="feat-icon glow-purple"><i data-lucide="gift"></i></div> Флешка в подарок</div>
+        </div>
+        <div class="lesson-actions">
+          <a href="tel:+79034456444" class="btn btn-primary btn-glow"><i data-lucide="phone"></i> Записать ребёнка</a>
+          <a href="https://t.me/buildcompyourself" target="_blank" rel="noopener" class="btn btn-outline"><i data-lucide="send"></i> Telegram</a>
+        </div>
+        <p class="lesson-sub">Пусть ребёнок попробует сам — и <strong class="text-gradient">расскажет вам дома лучше любой рекламы.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hooks">
+    <div class="container">
+      <div class="section-head gs-reveal">
+        <div class="tag glow-blue">Почему именно мы</div>
+        <h2>Живая <span class="text-gradient">мастерская</span> — реальные задачи</h2>
+        <p class="section-sub">Каждое занятие — живое железо на столе, конкретная задача и навык, который остаётся с ребёнком навсегда</p>
+      </div>
+
+      <div class="video-cards-grid">
+        <article class="video-card gs-reveal">
+          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
+            <source src="assets/video/hook_iron.webm" type="video/webm">
+            <source src="assets/video/hook_iron.mp4" type="video/mp4">
+          </video>
+          <div class="video-card-shade"></div>
+          <div class="video-card-content">
+            <div class="icon-box glow-blue"><i data-lucide="monitor"></i></div>
+            <h3>Настоящее железо</h3>
+            <p>Учебные ПК предоставляем. Можно принести свой — починим прямо на занятии.</p>
+          </div>
+        </article>
+
+        <article class="video-card gs-reveal" style="transition-delay:.1s">
+          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
+            <source src="assets/video/hook_practical.webm" type="video/webm">
+            <source src="assets/video/hook_practical.mp4" type="video/mp4">
+          </video>
+          <div class="video-card-shade"></div>
+          <div class="video-card-content">
+            <div class="icon-box glow-pink"><i data-lucide="settings"></i></div>
+            <h3>Практические навыки</h3>
+            <p>Работа руками формирует пространственное и системное мышление. Windows, драйверы, охлаждение, апгрейд — пригодится уже сегодня дома.</p>
+          </div>
+        </article>
+
+        <article class="video-card gs-reveal" style="transition-delay:.2s">
+          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
+            <source src="assets/video/hook_groups.webm" type="video/webm">
+            <source src="assets/video/hook_groups.mp4" type="video/mp4">
+          </video>
+          <div class="video-card-shade"></div>
+          <div class="video-card-content">
+            <div class="icon-box glow-purple"><i data-lucide="users"></i></div>
+            <h3>Группы до 6 человек</h3>
+            <p>Внимание каждому. Спиральная программа — от новичка до мастера.</p>
+          </div>
+        </article>
+
+        <article class="video-card gs-reveal" style="transition-delay:.3s">
+          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
+            <source src="assets/video/hook_wow.webm" type="video/webm">
+            <source src="assets/video/hook_wow.mp4" type="video/mp4">
+          </video>
+          <div class="video-card-shade"></div>
+          <div class="video-card-content">
+            <div class="icon-box glow-cyan"><i data-lucide="zap"></i></div>
+            <h3>Wow-эффект уже на пробном</h3>
+            <p>60 минут — и ребёнок сам соберёт и запустит ПК. Флешка с ОС в подарок.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="flex-row reverse" style="margin-bottom:80px;">
+        <div class="text-block gs-reveal">
+          <div class="tag glow-blue">Умная инвестиция</div>
+          <h2>Навыки, которые <span class="text-gradient-blue">окупаются</span></h2>
+          <p>Windows, чистка, диагностика — за это платят каждый день. Ваш ребёнок научится делать всё сам. А когда всё-таки вызовете мастера — ребёнок увидит каждое его действие и скажет вам: здесь честно, а вот здесь с вас берут лишнего.</p>
+        </div>
+        <div class="glass-card skill-bars gs-reveal">
+          <h4 class="bars-title">Вызов мастера <span style="color:var(--raspberry);font-weight:900;font-size:1.15em;">VS</span> навыки ребёнка</h4>
+          <div class="bar-row">
+            <span class="bar-label">Windows</span>
+            <div class="bar-track"><div class="bar-fill" data-width="75%" style="background:var(--raspberry);">от 2 500 ₽</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Чистка</span>
+            <div class="bar-track"><div class="bar-fill" data-width="52%" style="background:#d97706;">от 1 500 ₽</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Диагностика</span>
+            <div class="bar-track"><div class="bar-fill" data-width="38%" style="background:var(--blue);">от 1 000 ₽</div></div>
+          </div>
+          <div style="border-top:1px dashed var(--border);margin-top:10px;padding-top:10px;">
+            <div class="bar-row">
+              <span class="bar-label" style="color:var(--raspberry);font-weight:900;">Ваш ребёнок</span>
+              <div class="bar-track" style="overflow:visible;">
+                <div class="bar-fill rgb-fill" data-width="110%">Делает сам ∞</div>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--text3);margin-top:15px;text-align:center;">Пара вызовов мастера ≈ цена курса. Дальше — навыки бесплатно.</p>
+        </div>
+      </div>
+
+      <div class="flex-row" style="margin-bottom:0;">
+        <div class="text-block gs-reveal">
+          <div class="tag glow-pink">На занятии</div>
+          <h2>Реальное <span class="text-gradient">железо</span> на столе</h2>
+          <p>Материнские платы, процессоры, память, видеокарты — всё настоящее. Учебное оборудование предоставляем. Принесите свой ПК — починим прямо на занятии.</p>
+        </div>
+        <div class="glass-card section-video gs-reveal">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="assets/video/atmosphere.webm" type="video/webm">
+            <source src="assets/video/atmosphere.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= FULL-BLEED GAME SECTION ============= -->
+  <section class="game-section" id="game">
+    <div class="game-band">
+      <div class="container">
+        <div class="game-intro gs-reveal">
+          <div class="tag glow-cyan">Попробуй прямо сейчас</div>
+          <h2>Собери свой <span class="text-gradient">ПК</span> — посмотри что получится</h2>
+          <p>Перетащи компоненты на материнскую плату — пальцем на телефоне или мышкой на компьютере. Когда соберёшь — нажми «Запуск».</p>
+        </div>
+
+        <div class="game-stage" id="gameStage">
+          <aside class="game-parts" id="gameParts" aria-label="Компоненты ПК">
+            <div class="game-part" data-part="cpu" data-name="Процессор">
+              <div class="game-part-icon"><img src="assets/ai/comp_cpu.png?v=20260506j" alt="CPU"></div>
+              <div class="game-part-band">
+                <span class="game-part-label">Процессор</span>
+                <span class="game-part-hint">CPU</span>
+              </div>
+            </div>
+
+            <div class="game-part" data-part="cooler" data-name="Кулер">
+              <div class="game-part-icon"><img src="assets/ai/comp_cooler.png?v=20260506j" alt="Кулер"></div>
+              <div class="game-part-band">
+                <span class="game-part-label">Кулер</span>
+                <span class="game-part-hint">CPU Fan</span>
+              </div>
+            </div>
+
+            <div class="game-part" data-part="ram" data-name="Память">
+              <div class="game-part-icon"><img src="assets/ai/comp_ram.png?v=20260506j" alt="RAM"></div>
+              <div class="game-part-band">
+                <span class="game-part-label">Память</span>
+                <span class="game-part-hint">RAM</span>
+              </div>
+            </div>
+
+            <div class="game-part" data-part="gpu" data-name="Видеокарта">
+              <div class="game-part-icon"><img src="assets/ai/comp_gpu.png?v=20260506j" alt="GPU"></div>
+              <div class="game-part-band">
+                <span class="game-part-label">Видеокарта</span>
+                <span class="game-part-hint">RTX 5090</span>
+              </div>
+            </div>
+
+            <div class="game-part" data-part="psu" data-name="Питание">
+              <div class="game-part-icon"><img src="assets/ai/comp_psu.png?v=20260506j" alt="PSU"></div>
+              <div class="game-part-band">
+                <span class="game-part-label">Питание</span>
+                <span class="game-part-hint">PSU</span>
+              </div>
+            </div>
+          </aside>
+
+          <div class="game-board-col">
+            <div class="game-board" id="gameBoard" data-zones="assets/ai/zones.json">
+              <img class="game-board-photo" src="assets/ai/game_board.png?v=20260506j" alt="Материнская плата ASUS ROG Strix" aria-hidden="true">
+              <svg class="game-board-overlay" id="gameBoardOverlay" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <script type="application/json" id="zones-data">
+{"image":"game_board_v6.png","image_width_px":799,"image_height_px":972,"annotated_at":"2026-05-06T08:27:05.977Z","zones":[{"id":"cpu_socket","accepts":["cpu"],"polygon":[[348,198],[515,198],[519,375],[351,373],[347,197]]},{"id":"ram_slot_1","accepts":["ram"],"polygon":[[572,56],[573,501],[693,499],[694,58],[571,55]]},{"id":"pcie_x16","accepts":["gpu"],"polygon":[[141,557],[141,606],[495,609],[491,554],[139,556]]},{"id":"atx_24pin","accepts":["psu"],"polygon":[[737,188],[738,363],[781,362],[777,188],[736,186]]},{"id":"cpu_cooler","accepts":["cooler"],"polygon":[[313,410],[317,179],[541,180],[544,407],[313,407]]}]}
+              </script>
+            </div>
+
+            <div class="game-controls">
+              <button id="gameStart" class="btn btn-primary btn-glow btn-big">
+                <i data-lucide="power"></i> Запустить ПК (POST)
+              </button>
+              <button id="gameReset" class="btn btn-outline btn-big" style="display:none;">
+                <i data-lucide="rotate-ccw"></i> Разобрать
+              </button>
+            </div>
+
+            <div id="gameStatus" class="game-status">
+              > <span class="game-status-cursor">_</span> Ожидание компонентов...
+            </div>
+          </div>
+        </div>
+
+        <div class="game-success" id="gameSuccess" hidden>
+          <div class="game-success-headline">
+            <i data-lucide="check-circle-2"></i> POST пройден. Система запускается...
+          </div>
+          <div class="game-success-video">
+            <video autoplay loop muted playsinline preload="metadata">
+              <source src="assets/video/post_success.webm" type="video/webm">
+              <source src="assets/video/post_success.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="game-success-cta">
+            Это в игре. На пробном уроке ваш ребёнок запустит <strong>настоящий</strong> ПК — и уйдёт домой с пониманием каждого компонента.
+          </p>
+          <a href="#lesson" class="btn btn-primary btn-glow">
+            <i data-lucide="gift"></i> Записать на пробный
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section" id="awareness">
+    <div class="container">
+      <div class="awareness-box glass-card gs-reveal">
+        <div class="section-head" style="margin-bottom:30px;">
+          <div class="tag glow-blue">Осознанный выбор</div>
+          <h2>Мы <span class="text-gradient-blue">за разнообразие</span> в образовании</h2>
+          <p style="max-width:620px;margin:0 auto;color:var(--text2);">Пусть дети пробуют всё. Но родителям важно видеть полную картину — куда инвестировать время и деньги.</p>
+        </div>
+        <div class="grid-2">
+          <div class="aw-col">
+            <h3><i data-lucide="laptop" class="glow-blue" style="margin-right:8px;"></i> Программирование — отличный старт</h3>
+            <p>Программирование — достойный путь. При этом ИИ уже пишет код быстрее любого новичка. Ценность смещается туда, где алгоритм бессилен — к физическому миру.</p>
+            <div class="aw-hl"><strong>Серверы ChatGPT, дата-центры нейросетей, рабочие станции разработчиков</strong> — ИИ не настроит себя сам. Физическую инфраструктуру строят руками. Спрос на инженеров-практиков растёт лавинообразно.</div>
+          </div>
+          <div class="aw-col">
+            <h3><i data-lucide="cog" class="glow-pink" style="margin-right:8px;"></i> Робототехника — популярно. ПК — практично</h3>
+            <p>Робототехника развивает логику и командный дух — это здорово. При этом собранный на занятии «кубик LEGO» остаётся в школе. Ребёнок уходит домой без навыка, который работает в реальной жизни.</p>
+            <div class="aw-hl"><strong>На наших занятиях</strong> ребёнок уходит домой с умением, которое применяет уже завтра: разберёт свой ПК, поставит SSD маме, поможет однокласснику — это настоящая, ощутимая компетенция. Не «сделали вместе», а «сделал сам».</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-head gs-reveal">
+        <div class="tag glow-pink">Форматы занятий</div>
+        <h2>Выберите <span class="text-gradient-blue">свой формат</span></h2>
+      </div>
+      <div class="grid-3">
+        <div class="format-card glass-card gs-reveal">
+          <div class="card-tag">Популярный</div>
+          <i data-lucide="home" class="format-icon glow-blue"></i>
+          <h3>Клуб — регулярные занятия</h3>
+          <p>Малые группы до 6 чел., 1–2 раза в неделю. Практика на живых задачах: диагностика, обслуживание и апгрейд железа под контролем преподавателя.</p>
+          <div class="price">850 ₽ <span class="un">/ час</span></div>
+          <p style="font-size:0.82rem;color:var(--text3);margin-top:8px;">Дешевле вызова мастера — а ребёнок получает навык на всю жизнь</p>
+        </div>
+        <div class="format-card glass-card gs-reveal" style="transition-delay:.1s">
+          <i data-lucide="rocket" class="format-icon glow-pink"></i>
+          <h3>Интенсив на каникулах</h3>
+          <p>5 дней × 2,5 часа = 12,5 ч практики. Структура, результат, сертификат. Идеально для каникул.</p>
+          <div class="price">от 9 000 ₽ <span class="un">/ курс</span></div>
+        </div>
+        <div class="format-card glass-card gs-reveal" style="transition-delay:.2s">
+          <i data-lucide="cpu" class="format-icon glow-cyan"></i>
+          <h3>Собери КОМП Сам!</h3>
+          <p>Сборка из ваших или наших комплектующих. Ребёнок сам собирает и настраивает ПК в безопасной среде. Итог — готовый к играм и учёбе компьютер.</p>
+          <div class="price">от 7 000 ₽ <span class="un">/ 3–6 ч</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section" id="instructor">
+    <div class="container">
+      <div class="instructor-box-wide glass-card gs-reveal">
+        <div class="instructor-video-wide">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="assets/video/teacher_yury.webm" type="video/webm">
+            <source src="assets/video/teacher_yury.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="instructor-info-block">
+          <div class="tag glow-blue">Преподаватель</div>
+          <h2>Юрий Шуваев</h2>
+          <div class="instructor-creds">
+            <div class="cred"><i data-lucide="zap"></i> 27+ лет с железом</div>
+            <div class="cred"><i data-lucide="graduation-cap"></i> IT + педагогическое образование</div>
+            <div class="cred"><i data-lucide="briefcase"></i> Предприниматель-практик</div>
+          </div>
+          <p class="t2">
+            Путь начался со школы: собирал и настраивал ПК для друзей и семьи. Дальше — работа в компьютерном магазине, собственный бизнес в электронике и технике, продажи и сервис на Авито. Богатый опыт в железе и в бизнесе — всё это передаю детям на занятиях, на реальных задачах и реальном оборудовании.
+          </p>
+          <p class="t2 instructor-family">
+            <strong>Семья тоже в деле:</strong> старший сын <strong>Глеб</strong> (17 лет) объясняет ребятам у доски и за столом — как равный, не как взрослый. Младший <strong>Максим</strong> (11 лет) задаёт самые острые вопросы на занятиях и уже чинит ПК самостоятельно.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contacts">
+    <div class="container">
+      <div class="contacts-grid">
+        <div class="contacts-info gs-reveal">
+          <div class="tag glow-pink">Контакты</div>
+          <h2>Приходите — <span class="text-gradient">покажем</span></h2>
+
+          <div class="contact-item">
+            <div class="ci-icon glow-blue"><i data-lucide="phone"></i></div>
+            <div>
+              <div class="ci-label">Телефон</div>
+              <div class="ci-value"><a href="tel:+79034456444">8-903-44-56-444</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon glow-pink"><i data-lucide="map-pin"></i></div>
+            <div>
+              <div class="ci-label">Адрес</div>
+              <div class="ci-value">г. Ставрополь, ул. 50 лет ВЛКСМ, 28А<br>ТЦ «Милан», 2 этаж, левое крыло</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon glow-purple"><i data-lucide="clock"></i></div>
+            <div>
+              <div class="ci-label">Пробный урок</div>
+              <div class="ci-value">Сб–Вс, 14:00 – 15:00 (по записи)</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://yandex.ru/maps/?ll=41.923189%2C45.008831&z=17&text=Ставрополь%2C+50+лет+ВЛКСМ%2C+28А" target="_blank" rel="noopener"
+           class="contacts-map glass-card gs-reveal" aria-label="Открыть карту в Яндекс.Картах">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=41.923189%2C45.008831&z=17&pt=41.923189%2C45.008831%2Cpm2rdm&mode=search&text=Ставрополь+50+лет+ВЛКСМ+28А"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Карта Яндекс: ТЦ Милан, Ставрополь, ул. 50 лет ВЛКСМ, 28А">
+          </iframe>
+          <div class="contacts-map-overlay">
+            <i data-lucide="external-link"></i>
+            <span>ТЦ «Милан»<br><small>Ставрополь, ул. 50 лет ВЛКСМ, 28А</small></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <img src="assets/icon-no-bg.png" alt="" style="width:40px;height:40px;opacity:.8;">
+          <div class="footer-c">© «Собери КОМП Сам!» с 2025 года • Ставрополь • Курсы сборки и ремонта ПК для детей 7–17 лет</div>
+        </div>
+        <div class="footer-l">
+          <a href="tel:+79034456444"><i data-lucide="phone" style="width:14px;height:14px;margin-right:5px;vertical-align:middle;"></i>8-903-44-56-444</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=20260506j"></script>
+</body>
+</html>

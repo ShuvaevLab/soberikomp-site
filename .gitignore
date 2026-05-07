@@ -1,0 +1,22 @@
+# Secrets — must NEVER reach a public repo
+GIT_HUB_Key.txt
+*.pem
+*.key
+.env
+.env.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Python build artifacts (we don't ship Python from soberi-komp/)
+__pycache__/
+*.pyc
+*.pyo
+
+# Session/test artifacts that may be created in this dir during dev
+.playwright-mcp/
+*.log
