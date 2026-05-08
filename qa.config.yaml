@@ -1,0 +1,44 @@
+# WHO:     SITE_FACTORY/40_QA_GATE
+# WHAT:    example per-site QA config — copy to <site_dir>/qa.config.yaml and edit
+# WHY:     one source of truth for what the gate checks for THIS site
+# VERSION: 1.0
+# CREATED: 2026-05-07
+# EDIT:    2026-05-07
+---
+# Identifier — appears in LOGS/qa_runs/<site_id>/ and verdict reports.
+site_id:        soberikomp
+
+# How the gate reaches the site:
+#   local_serve: true  → run starts python http.server on `preview_port`
+#                        against `local_dir` (path relative to <site_dir>).
+#   local_serve: false → run hits `live_url` directly.
+local_serve:    true
+local_dir:      .
+live_url:       https://shuvaevlab.github.io/soberikomp-site/
+preview_port:   8910
+entry_path:     /
+
+# Multi-viewport sweep — every viewport runs the full check suite.
+# Add or remove rows as needed; minimum one viewport.
+viewports:
+  - { name: desktop_fhd,     w: 1920, h: 1080 }
+  - { name: desktop_macbook, w: 1440, h: 900  }
+  - { name: laptop_small,    w: 1366, h: 768  }
+  - { name: tablet_portrait, w: 768,  h: 1024 }
+  - { name: phone_iphone15,  w: 393,  h: 852  }
+
+# Sections that MUST fit fully above the fold on every viewport.
+# CSS selectors. Use IDs or stable data-attrs (data-qa-section="hero").
+# Empty list = above-fold check is skipped.
+above_fold_selectors: []
+# Example for soberi-komp:
+#   - "#hero"
+#   - "#game"
+#   - "#instructor"
+
+# Lighthouse thresholds (set to null to skip a category).
+lighthouse_thresholds:
+  performance:    80
+  accessibility:  90
+  seo:            90
+  best_practices: 90

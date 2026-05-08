@@ -543,7 +543,7 @@ a.stat-item.is-promo:active { transform: translateY(0) scale(0.99); }
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
 }
 .game-part-icon svg { width:100%; height:100%; }
-.game-part-icon img { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,.45)); }
+.game-part-icon img { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,.45)); pointer-events: none; -webkit-user-drag: none; -webkit-touch-callout: none; user-select: none; }
 .game-part-band {
   background: rgba(0,0,0,0.62);
   backdrop-filter: blur(4px);

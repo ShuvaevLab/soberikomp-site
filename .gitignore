@@ -21,3 +21,8 @@ __pycache__/
 .playwright-mcp/
 *.log
 _originals_pre_birefnet/
+test-results/
+playwright-report/
+_lhci_latest/
+pw_last_report.json
+.lighthouseci/
