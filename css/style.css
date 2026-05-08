@@ -940,13 +940,13 @@ a.stat-item.is-promo:active { transform: translateY(0) scale(0.99); }
     gap: 4px !important;
     padding: 6px !important;
   }
-  .game-part {
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
+  .game-parts > .game-part {
+    width: auto;
+    max-width: none;
+    min-width: 0;
     aspect-ratio: 1 / 1.08;
-    border-width: 1.5px !important;
-    border-radius: 9px !important;
+    border-width: 1.5px;
+    border-radius: 9px;
   }
   .game-part-icon { padding: 2px !important; }
   .game-part-band {
