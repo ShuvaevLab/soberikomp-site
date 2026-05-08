@@ -16,7 +16,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
-  <link rel="stylesheet" href="css/style.css?v=20260508c">
+  <link rel="stylesheet" href="css/style.css?v=20260508d">
 </head>
 <body>
 
@@ -67,11 +67,11 @@
 
     <div class="hero-video-band">
       <div class="hero-video-frame">
-        <video class="hero-video" autoplay loop muted playsinline preload="auto"
+        <video class="hero-video" autoplay loop muted playsinline preload="none"
                width="1600" height="900"
                poster="assets/icon-no-bg.webp">
-          <source src="assets/video/hero_main.webm" type="video/webm">
-          <source src="assets/video/hero_main.mp4" type="video/mp4">
+          <source data-src="assets/video/hero_main.webm" type="video/webm">
+          <source data-src="assets/video/hero_main.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -147,9 +147,9 @@
 
       <div class="video-cards-grid">
         <article class="video-card gs-reveal">
-          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
-            <source src="assets/video/hook_iron.webm" type="video/webm">
-            <source src="assets/video/hook_iron.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline preload="none" class="video-card-bg">
+            <source data-src="assets/video/hook_iron.webm" type="video/webm">
+            <source data-src="assets/video/hook_iron.mp4" type="video/mp4">
           </video>
           <div class="video-card-shade"></div>
           <div class="video-card-content">
@@ -160,9 +160,9 @@
         </article>
 
         <article class="video-card gs-reveal" style="transition-delay:.1s">
-          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
-            <source src="assets/video/hook_practical.webm" type="video/webm">
-            <source src="assets/video/hook_practical.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline preload="none" class="video-card-bg">
+            <source data-src="assets/video/hook_practical.webm" type="video/webm">
+            <source data-src="assets/video/hook_practical.mp4" type="video/mp4">
           </video>
           <div class="video-card-shade"></div>
           <div class="video-card-content">
@@ -173,9 +173,9 @@
         </article>
 
         <article class="video-card gs-reveal" style="transition-delay:.2s">
-          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
-            <source src="assets/video/hook_groups.webm" type="video/webm">
-            <source src="assets/video/hook_groups.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline preload="none" class="video-card-bg">
+            <source data-src="assets/video/hook_groups.webm" type="video/webm">
+            <source data-src="assets/video/hook_groups.mp4" type="video/mp4">
           </video>
           <div class="video-card-shade"></div>
           <div class="video-card-content">
@@ -186,9 +186,9 @@
         </article>
 
         <article class="video-card gs-reveal" style="transition-delay:.3s">
-          <video autoplay loop muted playsinline preload="metadata" class="video-card-bg">
-            <source src="assets/video/hook_wow.webm" type="video/webm">
-            <source src="assets/video/hook_wow.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline preload="none" class="video-card-bg">
+            <source data-src="assets/video/hook_wow.webm" type="video/webm">
+            <source data-src="assets/video/hook_wow.mp4" type="video/mp4">
           </video>
           <div class="video-card-shade"></div>
           <div class="video-card-content">
@@ -242,9 +242,9 @@
           <p>Материнские платы, процессоры, память, видеокарты — всё настоящее. Учебное оборудование предоставляем. Принесите свой ПК — починим прямо на занятии.</p>
         </div>
         <div class="glass-card section-video gs-reveal">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="assets/video/atmosphere.webm" type="video/webm">
-            <source src="assets/video/atmosphere.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline preload="none">
+            <source data-src="assets/video/atmosphere.webm" type="video/webm">
+            <source data-src="assets/video/atmosphere.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -333,9 +333,9 @@
             <i data-lucide="check-circle-2"></i> POST пройден. Система запускается...
           </div>
           <div class="game-success-video">
-            <video autoplay loop muted playsinline preload="metadata">
-              <source src="assets/video/post_success.webm" type="video/webm">
-              <source src="assets/video/post_success.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline preload="none">
+              <source data-src="assets/video/post_success.webm" type="video/webm">
+              <source data-src="assets/video/post_success.mp4" type="video/mp4">
             </video>
           </div>
           <p class="game-success-cta">
@@ -408,9 +408,9 @@
     <div class="container">
       <div class="instructor-box-wide glass-card gs-reveal">
         <div class="instructor-video-wide">
-          <video autoplay loop muted playsinline preload="metadata">
-            <source src="assets/video/teacher_yury.webm" type="video/webm">
-            <source src="assets/video/teacher_yury.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline preload="none">
+            <source data-src="assets/video/teacher_yury.webm" type="video/webm">
+            <source data-src="assets/video/teacher_yury.mp4" type="video/mp4">
           </video>
         </div>
         <div class="instructor-info-block">
@@ -492,6 +492,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260508c"></script>
+  <script src="js/main.js?v=20260508d"></script>
 </body>
 </html>
