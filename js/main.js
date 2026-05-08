@@ -567,8 +567,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   (function lazyLoadVideos() {
-    const videos = document.querySelectorAll("video");
-    if (!videos.length) return;
+    const lazyVideos = Array.from(document.querySelectorAll("video"))
+      .filter(v => v.querySelector("source[data-src]"));
+    if (!lazyVideos.length) return;
     const swap = (v) => {
       const sources = v.querySelectorAll("source[data-src]");
       if (!sources.length) return;
@@ -579,7 +580,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try { v.load(); } catch (e) {}
     };
     if (!("IntersectionObserver" in window)) {
-      videos.forEach(swap);
+      lazyVideos.forEach(swap);
       return;
     }
     const obs = new IntersectionObserver((entries, self) => {
@@ -589,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
         self.unobserve(entry.target);
       });
     }, { rootMargin: "200px 0px", threshold: 0 });
-    videos.forEach((v) => obs.observe(v));
+    lazyVideos.forEach((v) => obs.observe(v));
   })();
 
   refreshIcons();
