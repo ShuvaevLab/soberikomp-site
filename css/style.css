@@ -145,7 +145,8 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height:1.15; letter-spac
 /* ============================================================
    HERO — full-width logo + full-bleed video + meta
    ============================================================ */
-.hero { padding:100px 0 40px; position:relative; }
+.hero { padding:50px 0 40px; position:relative; }
+.logo-empty { display: inline-block; min-width: 1px; min-height: 28px; }
 
 .hero-logo-band {
   width: 100%;
@@ -674,6 +675,9 @@ a.stat-item.is-promo:active { transform: translateY(0) scale(0.99); }
   object-fit: contain;
   opacity: 1;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,0.55));
+}
+.game-board .game-part[data-part="ram"] .game-part-icon img {
+  object-fit: cover;
 }
 .game-board .game-part .game-part-band,
 .game-board .game-part .game-part-label,

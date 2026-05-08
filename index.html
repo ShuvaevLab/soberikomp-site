@@ -16,7 +16,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
-  <link rel="stylesheet" href="css/style.css?v=20260508b">
+  <link rel="stylesheet" href="css/style.css?v=20260508c">
 </head>
 <body>
 
@@ -25,9 +25,7 @@
 
   <nav class="navbar" id="navbar">
     <div class="container nav-content">
-      <a href="#" class="logo" aria-label="На главную">
-        <picture><source srcset="assets/icon-no-bg.avif" type="image/avif"><source srcset="assets/icon-no-bg.webp" type="image/webp"><img src="assets/icon-no-bg.png" alt="Собери КОМП Сам" class="nav-logo-icon"></picture>
-      </a>
+      <a href="#" class="logo logo-empty" aria-label="На главную"></a>
       <ul class="nav-links">
         <li><a href="#lesson">Пробный урок</a></li>
         <li><a href="#hooks">Почему мы</a></li>
@@ -266,7 +264,7 @@
         <div class="game-stage" id="gameStage">
           <aside class="game-parts" id="gameParts" aria-label="Компоненты ПК">
             <div class="game-part" data-part="cpu" data-name="Процессор">
-              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_cpu.avif?v=20260508b" type="image/avif"><source srcset="assets/ai/comp_cpu.webp?v=20260508b" type="image/webp"><img src="assets/ai/comp_cpu.png?v=20260508b" alt="CPU"></picture></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_cpu.avif?v=20260508c" type="image/avif"><source srcset="assets/ai/comp_cpu.webp?v=20260508c" type="image/webp"><img src="assets/ai/comp_cpu.png?v=20260508c" alt="CPU"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Процессор</span>
                 <span class="game-part-hint">CPU</span>
@@ -274,15 +272,15 @@
             </div>
 
             <div class="game-part" data-part="cooler" data-name="Кулер">
-              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_cooler.avif?v=20260508b" type="image/avif"><source srcset="assets/ai/comp_cooler.webp?v=20260508b" type="image/webp"><img src="assets/ai/comp_cooler.png?v=20260508b" alt="Кулер"></picture></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_cooler.avif?v=20260508c" type="image/avif"><source srcset="assets/ai/comp_cooler.webp?v=20260508c" type="image/webp"><img src="assets/ai/comp_cooler.png?v=20260508c" alt="Кулер"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Кулер</span>
                 <span class="game-part-hint">CPU Fan</span>
               </div>
             </div>
 
-            <div class="game-part" data-part="ram" data-name="Память">
-              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_ram.avif?v=20260508b" type="image/avif"><source srcset="assets/ai/comp_ram.webp?v=20260508b" type="image/webp"><img src="assets/ai/comp_ram.png?v=20260508b" alt="RAM"></picture></div>
+            <div class="game-part" data-part="ram" data-name="Память" data-img-slotted="assets/ai/comp_ram_slotted.png?v=20260508c">
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_ram.avif?v=20260508c" type="image/avif"><source srcset="assets/ai/comp_ram.webp?v=20260508c" type="image/webp"><img src="assets/ai/comp_ram.png?v=20260508c" alt="RAM"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Память</span>
                 <span class="game-part-hint">RAM</span>
@@ -290,7 +288,7 @@
             </div>
 
             <div class="game-part" data-part="gpu" data-name="Видеокарта">
-              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_gpu.avif?v=20260508b" type="image/avif"><source srcset="assets/ai/comp_gpu.webp?v=20260508b" type="image/webp"><img src="assets/ai/comp_gpu.png?v=20260508b" alt="GPU"></picture></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_gpu.avif?v=20260508c" type="image/avif"><source srcset="assets/ai/comp_gpu.webp?v=20260508c" type="image/webp"><img src="assets/ai/comp_gpu.png?v=20260508c" alt="GPU"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Видеокарта</span>
                 <span class="game-part-hint">RTX 5090</span>
@@ -298,7 +296,7 @@
             </div>
 
             <div class="game-part" data-part="psu" data-name="Питание">
-              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_psu.avif?v=20260508b" type="image/avif"><source srcset="assets/ai/comp_psu.webp?v=20260508b" type="image/webp"><img src="assets/ai/comp_psu.png?v=20260508b" alt="PSU"></picture></div>
+              <div class="game-part-icon"><picture><source srcset="assets/ai/comp_psu.avif?v=20260508c" type="image/avif"><source srcset="assets/ai/comp_psu.webp?v=20260508c" type="image/webp"><img src="assets/ai/comp_psu.png?v=20260508c" alt="PSU"></picture></div>
               <div class="game-part-band">
                 <span class="game-part-label">Питание</span>
                 <span class="game-part-hint">PSU</span>
@@ -308,7 +306,7 @@
 
           <div class="game-board-col">
             <div class="game-board" id="gameBoard" data-zones="assets/ai/zones.json">
-              <picture><source srcset="assets/ai/game_board.avif?v=20260508b" type="image/avif"><source srcset="assets/ai/game_board.webp?v=20260508b" type="image/webp"><img class="game-board-photo" src="assets/ai/game_board.png?v=20260508b" alt="Материнская плата ASUS ROG Strix" aria-hidden="true"></picture>
+              <picture><source srcset="assets/ai/game_board.avif?v=20260508c" type="image/avif"><source srcset="assets/ai/game_board.webp?v=20260508c" type="image/webp"><img class="game-board-photo" src="assets/ai/game_board.png?v=20260508c" alt="Материнская плата ASUS ROG Strix" aria-hidden="true"></picture>
               <svg class="game-board-overlay" id="gameBoardOverlay" preserveAspectRatio="none" aria-hidden="true"></svg>
               <script type="application/json" id="zones-data">
 {"image":"game_board_v6.png","image_width_px":799,"image_height_px":972,"annotated_at":"2026-05-06T08:27:05.977Z","zones":[{"id":"cpu_socket","accepts":["cpu"],"polygon":[[348,198],[515,198],[519,375],[351,373],[347,197]]},{"id":"ram_slot_1","accepts":["ram"],"polygon":[[572,56],[573,501],[693,499],[694,58],[571,55]]},{"id":"pcie_x16","accepts":["gpu"],"polygon":[[141,557],[141,606],[495,609],[491,554],[139,556]]},{"id":"atx_24pin","accepts":["psu"],"polygon":[[737,188],[738,363],[781,362],[777,188],[736,186]]},{"id":"cpu_cooler","accepts":["cooler"],"polygon":[[313,410],[317,179],[541,180],[544,407],[313,407]]}]}
@@ -494,6 +492,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260508b"></script>
+  <script src="js/main.js?v=20260508c"></script>
 </body>
 </html>

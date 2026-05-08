@@ -42,3 +42,21 @@ lighthouse_thresholds:
   accessibility:  90
   seo:            90
   best_practices: 90
+
+# Interaction-level checks (run on phone viewports only).
+# Catches regressions invisible to static visual snapshots — e.g. JS-driven
+# placement size, broken links, 404 assets, console errors.
+interaction_checks:
+  network_sweep:    true
+  link_check:       true
+  drag_drop:
+    enabled:        true
+    # Each part: drag from sidebar to (targetCx,targetCy) of the source-image
+    # coords (imgW × imgH from zones.json), assert placed bounds are within
+    # max%. PLACEMENT_PCT in main.js sets actual sizes; max here = ceiling so
+    # any regression that blows up the part is caught.
+    checks:
+      - { partName: cpu,    targetCx: 430, targetCy: 285, imgW: 799, imgH: 972, maxWidthPct: 30, maxHeightPct: 30 }
+      - { partName: ram,    targetCx: 633, targetCy: 278, imgW: 799, imgH: 972, maxWidthPct: 25, maxHeightPct: 65 }
+      - { partName: gpu,    targetCx: 315, targetCy: 580, imgW: 799, imgH: 972, maxWidthPct: 70, maxHeightPct: 25 }
+      - { partName: psu,    targetCx: 756, targetCy: 275, imgW: 799, imgH: 972, maxWidthPct: 25, maxHeightPct: 30 }
