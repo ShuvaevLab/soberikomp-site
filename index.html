@@ -42,7 +42,7 @@
         "url": "https://soberikompsam.ru/",
         "logo": "https://soberikompsam.ru/assets/logo-alt-no-bg.png",
         "image": "https://soberikompsam.ru/assets/og-image.png",
-        "description": "Практическое обучение сборке, настройке и ремонту ПК для детей 7–17 лет. Первая и единственная мастерская такого формата в России. Ставрополь, ТЦ «Милан».",
+        "description": "Практическое обучение сборке, настройке и ремонту ПК для детей 7–17 лет. Живая мастерская с реальным железом — редкий формат для России. Ставрополь, ТЦ «Милан».",
         "telephone": "+7-903-44-56-444",
         "priceRange": "от 850 ₽",
         "address": {
@@ -86,14 +86,44 @@
         "educationalLevel": "Дети 7–17 лет",
         "teaches": ["Сборка ПК", "Настройка ПК", "Базовый ремонт ПК", "Безопасность работы с электроникой"],
         "provider": { "@id": "https://soberikompsam.ru/#org" },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "category": "Trial",
-          "availability": "https://schema.org/InStock",
-          "description": "Бесплатный пробный урок"
-        },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Бесплатный пробный урок",
+            "price": "0",
+            "priceCurrency": "RUB",
+            "category": "Trial",
+            "availability": "https://schema.org/InStock",
+            "url": "https://soberikompsam.ru/#lesson"
+          },
+          {
+            "@type": "Offer",
+            "name": "Клуб — регулярные занятия",
+            "price": "850",
+            "priceCurrency": "RUB",
+            "availability": "https://schema.org/InStock",
+            "description": "Цена за 1 час. Малые группы до 6 человек, 1–2 раза в неделю.",
+            "url": "https://soberikompsam.ru/#products"
+          },
+          {
+            "@type": "Offer",
+            "name": "Интенсив на каникулах",
+            "price": "9000",
+            "priceCurrency": "RUB",
+            "availability": "https://schema.org/InStock",
+            "description": "От 9000 ₽ за курс. 5 дней × 2,5 часа = 12,5 ч практики, с сертификатом.",
+            "url": "https://soberikompsam.ru/#products"
+          },
+          {
+            "@type": "Offer",
+            "name": "Собери КОМП Сам! — сборка ПК",
+            "price": "7000",
+            "priceCurrency": "RUB",
+            "availability": "https://schema.org/InStock",
+            "description": "От 7000 ₽. Ребёнок сам собирает и настраивает ПК за 3–6 часов.",
+            "url": "https://soberikompsam.ru/#products"
+          }
+        ],
         "hasCourseInstance": {
           "@type": "CourseInstance",
           "courseMode": "onsite",
@@ -101,6 +131,41 @@
           "inLanguage": "ru"
         }
       }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org FAQPage — mirrors the visible FAQ section -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://soberikompsam.ru/#faq",
+    "mainEntity": [
+      { "@type": "Question", "name": "С какого возраста можно записать ребёнка?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Занимаемся с детьми от 7 до 17 лет. Программа спиральная: новичок начинает с азов, а ребёнок с опытом сразу переходит к более сложным задачам." } },
+      { "@type": "Question", "name": "Нужны ли ребёнку начальные знания или опыт?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Нет. Большинство ребят приходят с нуля. Всё показываем на реальном железе и в спокойном темпе — ребёнок учится руками, а не по учебнику." } },
+      { "@type": "Question", "name": "Что будет на бесплатном пробном уроке?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Пробный урок длится 60 минут, проходит по субботам и воскресеньям с 14:00 до 15:00 по предварительной записи. За это занятие ребёнок сам соберёт и запустит компьютер, а флешку с операционной системой заберёт домой в подарок." } },
+      { "@type": "Question", "name": "Сколько детей в группе?",
+        "acceptedAnswer": { "@type": "Answer", "text": "До 6 человек. Малые группы — чтобы преподаватель успевал уделить внимание каждому ребёнку и каждый работал руками, а не смотрел со стороны." } },
+      { "@type": "Question", "name": "Нужно ли приносить своё оборудование?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Нет, учебные компьютеры и комплектующие мы предоставляем. По желанию можно принести свой ПК или ноутбук — разберём и почистим прямо на занятии, ребёнок увидит всё изнутри." } },
+      { "@type": "Question", "name": "Сколько стоит обучение?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Пробный урок — бесплатно. Клуб (регулярные занятия) — 850 ₽ за час. Интенсив на каникулах — от 9 000 ₽ за курс. Формат «Собери КОМП Сам!» (полная сборка ПК) — от 7 000 ₽." } },
+      { "@type": "Question", "name": "Где проходят занятия?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ставрополь, ул. 50 лет ВЛКСМ, 28А, ТЦ «Милан», 2 этаж, левое крыло. Точку легко найти на Яндекс.Картах." } },
+      { "@type": "Question", "name": "Кто проводит занятия?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Юрий Шуваев — более 27 лет работы с компьютерным железом, IT- и педагогическое образование, предприниматель-практик. Опыт в технике и в бизнесе он передаёт детям на реальных задачах." } },
+      { "@type": "Question", "name": "Это безопасно для ребёнка?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Да. Все занятия проходят под контролем преподавателя, ребёнок сразу учится правилам безопасной работы с электроникой." } },
+      { "@type": "Question", "name": "Выдаёте ли вы документ об обучении?",
+        "acceptedAnswer": { "@type": "Answer", "text": "По итогам интенсива ребёнок получает сертификат о прохождении курса. Это внутренний документ мастерской и не является документом государственного образца." } },
+      { "@type": "Question", "name": "Чем сборка ПК лучше программирования или робототехники?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Это не «лучше», а другое — пусть ребёнок пробует разное. Особенность нашего формата в том, что навык остаётся с ребёнком: дома он сам разберёт и почистит компьютер, поставит SSD, поможет однокласснику." } },
+      { "@type": "Question", "name": "Как записаться?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Позвоните по телефону 8-903-44-56-444 или напишите в Telegram. Мы подберём удобное время для бесплатного пробного урока." } }
     ]
   }
   </script>
@@ -185,8 +250,8 @@
         <div class="hero-meta-text">
           <a href="#contacts" class="badge glow-blue badge-link" aria-label="Показать на карте">📍 Ставрополь • ТЦ «Милан» • 2 этаж</a>
           <p class="hero-subtitle">
-            Первый и единственный курс в России, где дети 7–17 лет работают с реальным железом:
-            собирают, настраивают, чинят ПК. Живая мастерская — с реальными задачами и результатом.
+            Живая мастерская, каких в России почти нет: дети 7–17 лет работают с реальным железом —
+            собирают, настраивают, чинят ПК. Реальные задачи и результат, который остаётся с ребёнком.
           </p>
           <div class="hero-actions">
             <a href="tel:+79034456444" class="btn btn-primary btn-glow">
@@ -531,6 +596,93 @@
     </div>
   </section>
 
+  <!-- ============= FAQ ============= -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head gs-reveal">
+        <div class="tag glow-cyan">Частые вопросы</div>
+        <h2>Вопросы <span class="text-gradient">родителей</span></h2>
+        <p class="section-sub">Коротко о главном. Не нашли ответ — позвоните: <a href="tel:+79034456444" style="color:var(--neon-blue);">8-903-44-56-444</a></p>
+      </div>
+      <div class="faq-list gs-reveal">
+        <details class="faq-item">
+          <summary>С какого возраста можно записать ребёнка?</summary>
+          <div class="faq-answer"><p>Занимаемся с детьми от 7 до 17 лет. Программа спиральная: новичок начинает с азов, а ребёнок с опытом сразу переходит к более сложным задачам.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Нужны ли ребёнку начальные знания или опыт?</summary>
+          <div class="faq-answer"><p>Нет. Большинство ребят приходят с нуля. Всё показываем на реальном железе и в спокойном темпе — ребёнок учится руками, а не по учебнику.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Что будет на бесплатном пробном уроке?</summary>
+          <div class="faq-answer"><p>Пробный урок длится 60 минут, проходит по субботам и воскресеньям с 14:00 до 15:00 по предварительной записи. За это занятие ребёнок сам соберёт и запустит компьютер, а флешку с операционной системой заберёт домой в подарок.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Сколько детей в группе?</summary>
+          <div class="faq-answer"><p>До 6 человек. Малые группы — чтобы преподаватель успевал уделить внимание каждому ребёнку и каждый работал руками, а не смотрел со стороны.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Нужно ли приносить своё оборудование?</summary>
+          <div class="faq-answer"><p>Нет, учебные компьютеры и комплектующие мы предоставляем. По желанию можно принести свой ПК или ноутбук — разберём и почистим прямо на занятии, ребёнок увидит всё изнутри.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Сколько стоит обучение?</summary>
+          <div class="faq-answer"><p>Пробный урок — бесплатно. Клуб (регулярные занятия) — 850 ₽ за час. Интенсив на каникулах — от 9 000 ₽ за курс. Формат «Собери КОМП Сам!» (полная сборка ПК) — от 7 000 ₽. Пара вызовов мастера на дом обычно стоит дороже, а навык остаётся с ребёнком навсегда.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Где проходят занятия?</summary>
+          <div class="faq-answer"><p>Ставрополь, ул. 50 лет ВЛКСМ, 28А, ТЦ «Милан», 2 этаж, левое крыло. Точку легко найти на Яндекс.Картах — ссылка есть в разделе «Контакты».</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Кто проводит занятия?</summary>
+          <div class="faq-answer"><p>Юрий Шуваев — более 27 лет работы с компьютерным железом, IT- и педагогическое образование, предприниматель-практик. Опыт в технике и в бизнесе он передаёт детям на реальных задачах.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Это безопасно для ребёнка?</summary>
+          <div class="faq-answer"><p>Да. Все занятия проходят под контролем преподавателя, ребёнок сразу учится правилам безопасной работы с электроникой. Компоненты подобраны так, чтобы практика была безопасной.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Выдаёте ли вы документ об обучении?</summary>
+          <div class="faq-answer"><p>По итогам интенсива ребёнок получает сертификат о прохождении курса. Это внутренний документ мастерской — он показывает, чему ребёнок научился, и не является документом государственного образца.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Чем сборка ПК лучше программирования или робототехники?</summary>
+          <div class="faq-answer"><p>Это не «лучше», а другое. Пусть ребёнок пробует разное. Особенность нашего формата в том, что навык остаётся с ребёнком: дома он сам разберёт и почистит компьютер, поставит SSD, поможет однокласснику. Это ощутимая компетенция, а не «собрали вместе на занятии».</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Как записаться?</summary>
+          <div class="faq-answer"><p>Позвоните по телефону 8-903-44-56-444 или напишите в Telegram. Мы подберём удобное время для бесплатного пробного урока.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= ARTICLES TEASER ============= -->
+  <section class="section section-tight" id="articles">
+    <div class="container">
+      <div class="section-head gs-reveal">
+        <div class="tag glow-blue">Полезные статьи</div>
+        <h2>Разбираемся <span class="text-gradient-blue">вместе</span></h2>
+        <p class="section-sub">Честные ответы на вопросы, которые родители задают перед записью</p>
+      </div>
+      <div class="articles-teaser gs-reveal">
+        <a class="article-link glass-card" href="articles/s-kakogo-vozrasta-rebenku-sobirat-kompyuter.html">
+          <i data-lucide="calendar-clock"></i><span>С какого возраста ребёнку собирать компьютер</span></a>
+        <a class="article-link glass-card" href="articles/kompyuternye-kursy-dlya-detey-stavropol.html">
+          <i data-lucide="map-pin"></i><span>Компьютерные курсы для детей в Ставрополе: как выбрать</span></a>
+        <a class="article-link glass-card" href="articles/programmirovanie-robototehnika-ili-sborka-pk.html">
+          <i data-lucide="git-compare"></i><span>Программирование, робототехника или сборка ПК — что выбрать</span></a>
+        <a class="article-link glass-card" href="articles/kak-vybrat-pervyy-kompyuter-rebenku.html">
+          <i data-lucide="shopping-cart"></i><span>Как выбрать первый компьютер для ребёнка</span></a>
+        <a class="article-link glass-card" href="articles/chemu-uchitsya-rebenok-na-kursah-sborki-pk.html">
+          <i data-lucide="graduation-cap"></i><span>Чему ребёнок учится на курсах сборки ПК</span></a>
+      </div>
+      <div style="text-align:center;margin-top:24px;">
+        <a href="articles/" class="btn btn-outline"><i data-lucide="book-open"></i> Все статьи</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="contacts">
     <div class="container">
       <div class="contacts-grid">
@@ -584,7 +736,16 @@
       <div class="footer-content">
         <div class="footer-info">
           <picture><source srcset="assets/icon-no-bg.avif" type="image/avif"><source srcset="assets/icon-no-bg.webp" type="image/webp"><img src="assets/icon-no-bg.png" alt="" style="width:40px;height:40px;opacity:.8;"></picture>
-          <div class="footer-c">© «Собери КОМП Сам!» с 2025 года • Ставрополь • Курсы сборки и ремонта ПК для детей 7–17 лет</div>
+          <div class="footer-text">
+            <div class="footer-c">© «Собери КОМП Сам!» с 2025 года • Ставрополь • Курсы сборки и ремонта ПК для детей 7–17 лет</div>
+            <div class="footer-legal">Самозанятый Шуваев Юрий · плательщик налога на профессиональный доход (НПД) · г. Ставрополь · тел. 8-903-44-56-444</div>
+            <nav class="footer-nav" aria-label="Дополнительные ссылки">
+              <a href="/articles/">Статьи</a>
+              <a href="/privacy.html">Политика конфиденциальности</a>
+              <a href="https://t.me/buildcompyourself" target="_blank" rel="noopener">Telegram</a>
+              <a href="https://yandex.ru/profile/204999416830/" target="_blank" rel="noopener">Яндекс.Карты</a>
+            </nav>
+          </div>
         </div>
         <div class="footer-l">
           <a href="tel:+79034456444"><i data-lucide="phone" style="width:14px;height:14px;margin-right:5px;vertical-align:middle;"></i>8-903-44-56-444</a>
@@ -594,5 +755,42 @@
   </footer>
 
   <script src="js/main.js?v=20260508e"></script>
+
+  <!-- ============================================================
+       ЯНДЕКС.МЕТРИКА — счётчик посещаемости
+       ЧТОБЫ ВКЛЮЧИТЬ: на metrika.yandex.ru создайте счётчик и впишите
+       его номер в METRIKA_ID ниже (вместо 0). Пока стоит 0 — код полностью
+       инертен: никаких запросов и cookie не отправляется.
+       После включения автоматически появляется уведомление о сборе
+       статистики со ссылкой на /privacy.html.
+       ============================================================ -->
+  <script>
+  (function () {
+    var METRIKA_ID = 0; /* <-- ВПИШИТЕ НОМЕР СЧЁТЧИКА ЯНДЕКС.МЕТРИКИ */
+    if (!METRIKA_ID) return; /* инертно, пока счётчик не задан */
+
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < e.scripts.length; j++) { if (e.scripts[j].src === r) { return; } }
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(METRIKA_ID, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+
+    /* уведомление о сборе анонимной статистики (показывается один раз) */
+    if (!localStorage.getItem('ck_ok')) {
+      var b = document.createElement('div');
+      b.className = 'cookie-notice';
+      b.innerHTML = 'Мы используем Яндекс.Метрику для анонимной статистики посещений. ' +
+        '<a href="/privacy.html">Подробнее</a>. ' +
+        '<button type="button">Понятно</button>';
+      document.body.appendChild(b);
+      b.querySelector('button').addEventListener('click', function () {
+        localStorage.setItem('ck_ok', '1'); b.remove();
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
