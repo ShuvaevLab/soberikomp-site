@@ -94,7 +94,9 @@
       { "@type": "Question", "name": "Что делать, если компьютер не включается после сборки?",
         "acceptedAnswer": { "@type": "Answer", "text": "В 9 из 10 случаев причина — недовставленная память, неподключённый 8-pin питания процессора или провода передней панели. Выключите блок питания, переустановите память и проверьте все кабели по инструкции к материнской плате." } },
       { "@type": "Question", "name": "Собрать ПК самому или купить готовый?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Самостоятельная сборка обычно выгоднее по цене и даёт контроль над каждым компонентом, а заодно — понимание того, как устроен компьютер. Готовый ПК удобнее, но в нём часто экономят на незаметных деталях." } }
+        "acceptedAnswer": { "@type": "Answer", "text": "Самостоятельная сборка обычно выгоднее по цене и даёт контроль над каждым компонентом, а заодно — понимание того, как устроен компьютер. Готовый ПК удобнее, но в нём часто экономят на незаметных деталях." } },
+      { "@type": "Question", "name": "Можно ли прийти и собрать свой компьютер вместе с мастером?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Да. В Ставрополе у нас есть формат совместной сборки для взрослых и подростков: вы приходите со своими комплектующими (или покупаете их у нас) и за 3–6 часов собираете свой компьютер своими руками рядом с профессионалом. Уходите домой с готовой рабочей машиной и понимаем, как она устроена. Это удобно тем, кто всё равно собирался платить сборщику, — цена та же, но компьютер вы соберёте сами." } }
     ]
   }
   </script>
@@ -103,6 +105,79 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Step animations: self-contained CSS/SVG, no external JS dependency.
+       Default (no-JS) state = "ready to install" (part hovers above its slot);
+       a tiny IntersectionObserver below adds .is-playing to animate it in.
+       prefers-reduced-motion → parts shown seated, no motion. -->
+  <style>
+    .pc-anim{ margin:26px 0; padding:20px 18px 14px; border-radius:var(--radius-sm);
+      background:var(--glass-bg); border:1px solid var(--glass-border); text-align:center;
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+    .pc-anim svg{ width:100%; max-width:300px; height:auto; margin:0 auto; display:block; overflow:visible; }
+    .pc-anim figcaption{ margin-top:12px; font-family:var(--font-heading); font-weight:800;
+      font-size:.86rem; letter-spacing:.3px; color:var(--neon-blue); line-height:1.35; }
+    .pc-anim .sk-base{ fill:rgba(34,149,211,.08); stroke:var(--neon-blue); stroke-width:2.5; }
+    .pc-anim .sk-part{ fill:rgba(34,149,211,.16); stroke:var(--neon-blue); stroke-width:2.5; }
+    .pc-anim .sk-mark{ fill:var(--neon-pink); stroke:none; }
+    .pc-anim .sk-contact{ fill:#e0a93b; stroke:none; }
+    .pc-anim .sk-chip{ fill:rgba(34,149,211,.35); stroke:none; }
+    .pc-anim .sk-line{ fill:none; stroke:var(--neon-blue); stroke-width:2; }
+    .pc-anim .sk-fan{ fill:none; stroke:var(--neon-blue); stroke-width:2.5; }
+    .pc-anim .sk-flash{ fill:var(--neon-green); stroke:none; opacity:0; }
+
+    /* before-state: ready, visible even with JS disabled */
+    .a-cpu  .cpu     { transform-box:fill-box; transform:translateY(-46px); }
+    .a-cpu  .lever   { transform-box:fill-box; transform-origin:6px 50%; transform:rotate(-72deg); }
+    .a-paste .drop   { transform-box:fill-box; transform-origin:center; transform:scale(0); }
+    .a-paste .spread { transform-box:fill-box; transform-origin:center; transform:scaleX(0); opacity:0; }
+    .a-paste .cooler { transform-box:fill-box; transform:translateY(-44px); opacity:0; }
+    .a-ram  .ram     { transform-box:fill-box; transform:translateY(-62px); }
+    .a-ram  .latch-l { transform-box:fill-box; transform-origin:50% 100%; transform:rotate(-34deg); }
+    .a-ram  .latch-r { transform-box:fill-box; transform-origin:50% 100%; transform:rotate(34deg); }
+    .a-gpu  .gpu     { transform-box:fill-box; transform:translateY(-46px); }
+
+    /* play on scroll-in */
+    .pc-anim.is-playing .a-cpu .cpu      { animation:cpuDrop   1s   .15s both; }
+    .pc-anim.is-playing .a-cpu .lever    { animation:cpuLever  .55s 1.05s both; }
+    .pc-anim.is-playing .a-cpu .sk-flash { animation:skFlash   .6s  1.5s  both; }
+    .pc-anim.is-playing .a-paste .drop   { animation:pasteDrop .8s  .2s   both; }
+    .pc-anim.is-playing .a-paste .cooler { animation:coolerDrop .8s 1.0s   both; }
+    .pc-anim.is-playing .a-paste .spread { animation:pasteSpread .6s 1.5s  both; }
+    .pc-anim.is-playing .a-ram .ram      { animation:ramDrop   .9s  .15s  both; }
+    .pc-anim.is-playing .a-ram .latch-l  { animation:latchL    .45s 1.0s  both; }
+    .pc-anim.is-playing .a-ram .latch-r  { animation:latchR    .45s 1.0s  both; }
+    .pc-anim.is-playing .a-ram .sk-flash { animation:skFlash   .6s  1.4s  both; }
+    .pc-anim.is-playing .a-gpu .gpu      { animation:gpuDrop   1s   .15s  both; }
+    .pc-anim.is-playing .a-gpu .sk-flash { animation:skFlash   .6s  1.2s  both; }
+
+    @keyframes cpuDrop    { 0%{transform:translateY(-46px)} 72%{transform:translateY(2px)} 100%{transform:translateY(0)} }
+    @keyframes cpuLever   { 0%{transform:rotate(-72deg)} 100%{transform:rotate(0)} }
+    @keyframes skFlash    { 0%{opacity:0} 30%{opacity:.55} 100%{opacity:0} }
+    @keyframes pasteDrop  { 0%{transform:scale(0)} 60%{transform:scale(1.18)} 100%{transform:scale(1)} }
+    @keyframes coolerDrop { 0%{transform:translateY(-44px);opacity:0} 18%{opacity:1} 100%{transform:translateY(0);opacity:1} }
+    @keyframes pasteSpread{ 0%{transform:scaleX(0);opacity:0} 100%{transform:scaleX(1);opacity:.85} }
+    @keyframes ramDrop    { 0%{transform:translateY(-62px)} 76%{transform:translateY(3px)} 100%{transform:translateY(0)} }
+    @keyframes latchL     { 0%{transform:rotate(-34deg)} 100%{transform:rotate(0)} }
+    @keyframes latchR     { 0%{transform:rotate(34deg)} 100%{transform:rotate(0)} }
+    @keyframes gpuDrop    { 0%{transform:translateY(-46px)} 76%{transform:translateY(3px)} 100%{transform:translateY(0)} }
+
+    @media (prefers-reduced-motion: reduce){
+      .pc-anim .cpu, .pc-anim .lever, .pc-anim .cooler, .pc-anim .ram,
+      .pc-anim .latch-l, .pc-anim .latch-r, .pc-anim .gpu, .pc-anim .drop{
+        animation:none !important; transform:none !important; opacity:1 !important;
+      }
+      .pc-anim .spread, .pc-anim .sk-flash{ animation:none !important; opacity:0 !important; }
+    }
+
+    /* warm real-lesson loop near the conversion block */
+    .lesson-loop{ margin:30px 0 8px; border-radius:var(--radius); overflow:hidden;
+      border:1px solid var(--border-h); box-shadow:0 18px 50px rgba(0,0,0,.35), 0 0 26px var(--glow-b); }
+    .lesson-loop video{ display:block; width:100%; aspect-ratio:16/9; object-fit:cover; background:#0a0e1c; }
+    .lesson-loop figcaption{ padding:11px 16px; font-size:.9rem; color:var(--text2);
+      background:var(--glass-bg); text-align:center; font-weight:700; }
+  </style>
+
   <script defer src="https://unpkg.com/lucide@latest"></script>
   <script>(function(){try{var t=localStorage.getItem("sks-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
 </head>
@@ -151,14 +226,18 @@
           <p class="article-meta">Обновлено 8 июня 2026 · Юрий Александрович Шуваев</p>
         </header>
         <div class="prose">
-          <p>«Собрать компьютер самому» звучит пугающе, пока не сделаешь это один раз. На деле современный ПК — это конструктор для взрослых: у каждого разъёма своя форма, неправильно деталь почти не вставишь, а вся сборка укладывается в пару часов. Ниже — <strong>пошаговая инструкция</strong> от человека, который собрал не одну сотню машин и каждую субботу учит этому детей в Ставрополе. Сохраните страницу — по ней удобно собирать, держа телефон рядом.</p>
+          <p>«Собрать компьютер самому» звучит страшно ровно до того момента, как сделаешь это первый раз. А потом выясняется, что современный ПК — это конструктор для взрослых: у каждого разъёма своя форма, неправильно деталь попросту не лезет, и вся сборка укладывается в пару часов. Ниже — честная <strong>пошаговая инструкция</strong> от человека, который собрал не одну сотню машин и каждую субботу учит этому детей в Ставрополе. Сохраните страницу: по ней удобно собирать, держа телефон под рукой.</p>
 
-          <p>Сразу про главный страх: <strong>сломать что-то при сборке очень трудно</strong>, если не прилагать силу и работать на выключенном из розетки компьютере. Самые частые «поломки» новичка безобидны — память вставлена не до щелчка или забыт один кабель. Это лечится за минуту.</p>
+          <p>Сразу про главный страх. <strong>Сломать что-то при сборке очень трудно</strong> — если не прилагать силу и работать на выключенном из розетки компьютере. Девять «поломок» новичка из десяти безобидны: память вставлена не до щелчка или забыт один кабель. Это лечится за минуту, и ниже я покажу, где именно подстелить соломки.</p>
+
+          <p>Хотите почувствовать логику сборки прямо сейчас, не доставая ни одной живой детали? На главной странице есть <a href="/#game">интерактивный тренажёр</a>: перетаскиваете процессор, память и видеокарту на плату, жмёте «Запуск» — и видите, заведётся ли машина. Ошибётесь — ничего страшного, плата виртуальная. Пять минут там, и дальнейшие шаги лягут гораздо понятнее.</p>
+
+          <blockquote><strong>Важно: единственно «правильной» сборки не существует.</strong> Сколько сборщиков — столько и подходов: кто-то наносит термопасту каплей, кто-то тонким слоем; по-разному смотрят и на порядок шагов, и на укладку кабелей. Всё это рабочие способы. Ниже — один проверенный маршрут, по которому новичку собрать первый компьютер удобно и почти невозможно ошибиться; это <strong>один из вариантов</strong>, а не истина в последней инстанции. На занятиях «Собери КОМП Сам!» мы как раз показываем, какие подходы вообще существуют и почему в каждом случае выбирают тот или иной, — чтобы человек понимал саму логику, а не заучивал единственный рецепт.</blockquote>
 
           <h2>Что понадобится</h2>
           <ul>
             <li><strong>Крестовая отвёртка</strong> — в 95% случаев это весь инструмент.</li>
-            <li><strong>Антистатика</strong> — браслет по желанию; достаточно перед сборкой коснуться рукой батареи или корпуса блока питания, чтобы снять статический заряд.</li>
+            <li><strong>Антистатика</strong> — браслет по желанию; достаточно перед сборкой коснуться рукой батареи отопления или корпуса блока питания, чтобы снять заряд.</li>
             <li><strong>Термопаста</strong> — на боксовых кулерах она уже нанесена; отдельная нужна, только если ставите свой кулер.</li>
             <li><strong>Загрузочная флешка</strong> с Windows или Linux — её готовят заранее на другом компьютере.</li>
             <li><strong>Инструкция к материнской плате</strong> — главный документ сборки, в нём схема всех разъёмов.</li>
@@ -178,17 +257,70 @@
           <p>Если на этом этапе вы ещё подбираете детали, начните со статьи <a href="kak-vybrat-pervyy-kompyuter-rebenku.html">«Как выбрать первый компьютер»</a> — там разобрано, на чём нельзя экономить и как не переплатить за бренд.</p>
 
           <h2 id="step-1">Шаг 1. Подготовьте место и комплектующие</h2>
-          <p>Освободите сухой стол с хорошим светом. Распакуйте детали, но материнскую плату пока положите на её антистатический пакет или коробку — собирать процессор и память удобнее именно так, до установки платы в корпус. Снимите статику с рук. Откройте инструкцию к плате на странице со схемой разъёмов.</p>
+          <p>Освободите сухой стол с хорошим светом. Распакуйте детали, но материнскую плату пока положите на её антистатический пакет или коробку — процессор и память удобнее ставить именно так, до установки платы в корпус. Снимите статику с рук. Откройте инструкцию к плате на странице со схемой разъёмов — дальше вы будете в неё подглядывать чаще, чем кажется, и это нормально.</p>
 
           <h2 id="step-2">Шаг 2. Установите процессор</h2>
           <p>Откройте рамку сокета на материнской плате. На процессоре есть <strong>ключ-метка</strong> (треугольник в углу и/или прорези по краям) — её нужно совместить с такой же меткой на сокете. Опустите процессор <strong>без нажима</strong>: он встаёт под собственным весом. Закройте рамку — она прижмёт процессор с заметным, но штатным усилием.</p>
+
+          <figure class="pc-anim a-cpu">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Совмещение метки процессора и закрытие рамки сокета">
+              <rect class="sk-base" x="55" y="74" width="110" height="58" rx="6"/>
+              <path class="sk-mark" d="M62 81 l13 0 l0 13 z"/>
+              <rect class="sk-part lever" x="160" y="100" width="42" height="7" rx="3.5"/>
+              <g class="cpu">
+                <rect class="sk-part" x="66" y="80" width="88" height="46" rx="4"/>
+                <path class="sk-mark" d="M72 86 l12 0 l0 12 z"/>
+              </g>
+              <rect class="sk-flash" x="55" y="74" width="110" height="58" rx="6"/>
+            </svg>
+            <figcaption>Совместите метку → опустите без нажима → закройте рамку</figcaption>
+          </figure>
+
           <blockquote>Золотое правило сборки: ничего не вставляется через силу. Если деталь не идёт — значит, повёрнута не той стороной. Остановитесь и проверьте метку.</blockquote>
+          <p>Именно этот момент — когда рамка с лёгким щелчком прижимает процессор — на пробном уроке мы первым делом даём сделать руками. Страх уходит сразу, как только пальцы один раз это почувствовали; дальше человек собирает уже спокойно.</p>
 
           <h2 id="step-3">Шаг 3. Поставьте кулер и термопасту</h2>
-          <p>Если на подошве кулера уже есть слой пасты — просто ставьте кулер. Если нет — выдавите на крышку процессора каплю термопасты размером <strong>с горошину</strong>, она равномерно распределится под прижимом. Закрепите кулер по инструкции и обязательно подключите его провод к разъёму <strong>CPU_FAN</strong> на плате — без этого компьютер может не стартовать.</p>
+          <p>Если на подошве кулера уже есть слой пасты — просто ставьте кулер. Если нет — выдавите на крышку процессора каплю термопасты размером <strong>с горошину</strong>: под прижимом она сама растечётся ровным слоем, размазывать не нужно. Закрепите кулер по инструкции и обязательно подключите его провод к разъёму <strong>CPU_FAN</strong> на плате — без этого компьютер может не стартовать.</p>
+
+          <figure class="pc-anim a-paste">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Капля термопасты с горошину и установка кулера сверху">
+              <rect class="sk-base" x="55" y="100" width="110" height="30" rx="4"/>
+              <ellipse class="spread" cx="110" cy="101" rx="48" ry="6" fill="#9aa7c2"/>
+              <circle class="drop" cx="110" cy="101" r="8" fill="#cfd8ea"/>
+              <g class="cooler">
+                <rect class="sk-part" x="62" y="56" width="96" height="40" rx="5"/>
+                <line class="sk-line" x1="78"  y1="60" x2="78"  y2="92"/>
+                <line class="sk-line" x1="94"  y1="60" x2="94"  y2="92"/>
+                <line class="sk-line" x1="110" y1="60" x2="110" y2="92"/>
+                <line class="sk-line" x1="126" y1="60" x2="126" y2="92"/>
+                <line class="sk-line" x1="142" y1="60" x2="142" y2="92"/>
+              </g>
+            </svg>
+            <figcaption>Капля с горошину — под кулером она расплющится в ровный слой</figcaption>
+          </figure>
 
           <h2 id="step-4">Шаг 4. Вставьте оперативную память</h2>
-          <p>Отодвиньте защёлки слотов ОЗУ. У планки есть прорезь, которая совпадает только в одном положении. Вставляйте <strong>до щелчка</strong> защёлок — это самое частое место ошибки новичка. Если планок две, а слотов четыре, ставьте их в слоты, указанные в инструкции (обычно второй и четвёртый) — это включит двухканальный режим и даст прирост скорости.</p>
+          <p>Отодвиньте защёлки слотов ОЗУ. У планки есть прорезь, которая совпадает только в одном положении. Вставляйте <strong>до щелчка</strong> защёлок — это самое частое место ошибки новичка. Если планок две, а слотов четыре, ставьте их в слоты, указанные в инструкции (обычно второй и четвёртый): так включится двухканальный режим и память заработает заметно быстрее.</p>
+
+          <figure class="pc-anim a-ram">
+            <svg viewBox="0 0 220 160" role="img" aria-label="Установка модуля памяти в слот до щелчка защёлок">
+              <rect class="sk-base" x="44" y="120" width="132" height="14" rx="3"/>
+              <rect class="sk-part latch-l" x="33" y="106" width="12" height="26" rx="3"/>
+              <rect class="sk-part latch-r" x="175" y="106" width="12" height="26" rx="3"/>
+              <g class="ram">
+                <rect class="sk-part" x="54" y="52" width="112" height="64" rx="3"/>
+                <rect class="sk-chip" x="66"  y="64" width="16" height="22" rx="2"/>
+                <rect class="sk-chip" x="90"  y="64" width="16" height="22" rx="2"/>
+                <rect class="sk-chip" x="114" y="64" width="16" height="22" rx="2"/>
+                <rect class="sk-chip" x="138" y="64" width="16" height="22" rx="2"/>
+                <rect class="sk-contact" x="58" y="110" width="104" height="6" rx="1"/>
+              </g>
+              <rect class="sk-flash" x="44" y="116" width="132" height="22" rx="3"/>
+            </svg>
+            <figcaption>Вставляйте вертикально до щелчка — защёлки захлопнутся сами</figcaption>
+          </figure>
+
+          <p>Тот самый щелчок защёлок ни с чем не спутаешь — дети на занятии его, честно говоря, обожают: память встала, защёлки сошлись, и сразу понятно, что всё сделано правильно.</p>
 
           <h2 id="step-5">Шаг 5. Установите накопитель (SSD)</h2>
           <p>Современный SSD формата <strong>M.2</strong> вставляется прямо в плату: под углом в слот, затем прижать и закрутить маленьким винтиком (или защёлкнуть фиксатор). Накопители и диски формата <strong>SATA</strong> крепятся в корзине корпуса и подключаются двумя кабелями — данные и питание — позже, на шаге 9.</p>
@@ -202,29 +334,58 @@
           <h2 id="step-8">Шаг 8. Установите видеокарту</h2>
           <p>Если видеокарта дискретная — снимите напротив неё пару заглушек на задней стенке корпуса, вставьте карту в <strong>верхний слот PCIe</strong> до щелчка фиксатора и прикрутите к корпусу. Не забудьте про <strong>дополнительное питание</strong> (6/8-pin) — без него мощная карта не заработает. В сборке со встроенным видео этот шаг пропускается.</p>
 
+          <figure class="pc-anim a-gpu">
+            <svg viewBox="0 0 220 150" role="img" aria-label="Установка видеокарты в верхний слот PCIe до щелчка">
+              <rect class="sk-base" x="44" y="104" width="120" height="11" rx="2"/>
+              <g class="gpu">
+                <rect class="sk-part" x="38" y="46" width="150" height="52" rx="4"/>
+                <circle class="sk-fan" cx="80"  cy="72" r="17"/>
+                <circle class="sk-fan" cx="130" cy="72" r="17"/>
+                <rect class="sk-contact" x="60" y="96" width="74" height="6" rx="1"/>
+              </g>
+              <rect class="sk-flash" x="44" y="100" width="120" height="18" rx="2"/>
+            </svg>
+            <figcaption>Видеокарта — в верхний слот PCIe до щелчка фиксатора</figcaption>
+          </figure>
+
           <h2 id="step-9">Шаг 9. Подключите все кабели</h2>
           <p>Финальный и самый «нервный» для новичка этап — но всё подписано. По инструкции к плате подключите:</p>
           <ul>
             <li><strong>24-pin</strong> — основное питание материнской платы;</li>
-            <li><strong>8-pin (CPU)</strong> — питание процессора, в верхнем углу платы (про него часто забывают);</li>
+            <li><strong>8-pin (CPU)</strong> — питание процессора, в верхнем углу платы (про него забывают чаще всего);</li>
             <li><strong>SATA-питание и данные</strong> — к дискам, если они есть;</li>
             <li><strong>провода передней панели</strong> — кнопка включения, индикаторы, USB и аудио с корпуса. Это самые мелкие штекеры; их распиновка есть в инструкции.</li>
           </ul>
-          <p>Стяните лишние кабели стяжками — аккуратная укладка улучшает продув и выглядит профессионально.</p>
+          <p>Стяните лишние кабели стяжками — аккуратная укладка улучшает продув и просто приятно смотрится.</p>
 
           <h2 id="step-10">Шаг 10. Первый запуск и BIOS</h2>
-          <p>Не закрывая крышку, подключите монитор, клавиатуру и питание, включите тумблер на блоке и нажмите кнопку. Закрутились вентиляторы, есть картинка — поздравляю, компьютер живой. Зайдите в <strong>BIOS</strong> (обычно Del или F2 при старте) и проверьте, что система видит процессор, весь объём памяти и накопитель. Если используете быструю память — включите профиль <strong>XMP/EXPO</strong>.</p>
-          <p>Не включается? Не паникуйте: в 9 случаях из 10 виноваты недовставленная память, забытый 8-pin питания процессора или неверно подключённая кнопка с передней панели. Обесточьте, переустановите память и пройдитесь по кабелям ещё раз.</p>
+          <p>Не закрывая крышку, подключите монитор, клавиатуру и питание, включите тумблер на блоке и нажмите кнопку. Закрутились вентиляторы, на экране картинка — поздравляю, компьютер живой. Зайдите в <strong>BIOS</strong> (обычно Del или F2 при старте) и проверьте, что система видит процессор, весь объём памяти и накопитель. Если память быстрая — включите профиль <strong>XMP/EXPO</strong>, иначе она будет работать на заниженной частоте.</p>
+          <p>Не включается? Не паникуйте: в 9 случаях из 10 виноваты недовставленная память, забытый 8-pin питания процессора или неверно подключённая кнопка с передней панели. Обесточьте, переустановите память и пройдитесь по кабелям ещё раз — почти всегда находится именно это.</p>
 
           <h2 id="step-11">Шаг 11. Установите операционную систему</h2>
           <p>Вставьте загрузочную флешку, в BIOS выберите загрузку с неё и установите Windows или Linux, следуя подсказкам мастера. После установки поставьте драйверы (проще всего — драйвер видеокарты и обновления системы). Всё — компьютер, собранный <strong>своими руками</strong>, готов к работе.</p>
 
           <h2>А что с искусственным интеллектом?</h2>
-          <p>Сегодня сборка ПК — это ещё и вход в мир <strong>нейросетей</strong>: локальные ИИ-помощники всё чаще запускают прямо на домашнем компьютере, и под них подбирают объём памяти и видеокарту. Мы на занятиях показываем, как ИИ помогает даже в самой сборке и настройке — подсказывает совместимость деталей и диагностику. Это уже часть нашей программы, а не далёкое будущее.</p>
+          <p>Сегодня сборка ПК — это ещё и вход в мир <strong>нейросетей</strong>: локальные ИИ-помощники всё чаще запускают прямо на домашнем компьютере, и именно под них подбирают объём памяти и видеокарту. На занятиях мы показываем, как ИИ помогает в самой сборке — подсказывает совместимость деталей и помогает с диагностикой. Это уже часть нашей программы, а не далёкое будущее.</p>
 
           <h2>Собрал сам — что дальше</h2>
-          <p>Когда вы один раз прошли весь путь руками, выбор техники перестаёт быть лотереей, а апгрейд (добавить память, поставить SSD, поменять видеокарту) становится делом на 15 минут. Именно поэтому навык сборки так ценен <strong>детям</strong>: ребёнок, который понимает устройство компьютера, не зависит от мастера и видит технику изнутри.</p>
-          <p>Если хотите, чтобы этот навык появился у вашего ребёнка под руководством наставника и на реальном железе — у нас в Ставрополе есть формат <strong>«Собери КОМП Сам!»</strong>, где ребёнок 7–17 лет собирает полноценный ПК своими руками. С какого возраста это уже по силам, разобрано в статье <a href="s-kakogo-vozrasta-rebenku-sobirat-kompyuter.html">«С какого возраста ребёнку собирать компьютер»</a>, а что именно остаётся с ребёнком после курса — в статье <a href="chemu-uchitsya-rebenok-na-kursah-sborki-pk.html">«Чему ребёнок учится на курсах сборки ПК»</a>.</p>
+          <p>Когда вы один раз прошли весь путь руками, выбор техники перестаёт быть лотереей, а апгрейд — добавить память, поставить SSD, поменять видеокарту — становится делом на пятнадцать минут. Поэтому навык так ценен: вы перестаёте зависеть от мастера и видите технику изнутри.</p>
+
+          <p>Но честно: одно дело — прочитать, и совсем другое — впервые держать процессор за 20 тысяч над сокетом, когда руки немного дрожат. Этот первый раз почти всем спокойнее пройти рядом с тем, кто собрал сотни машин. Поэтому у нас в Ставрополе есть два пути.</p>
+
+          <p><strong>Ребёнку 7–17 лет</strong> — формат <strong>«Собери КОМП Сам!»</strong>: он собирает полноценный ПК своими руками и начинает понимать каждую деталь. С какого возраста это уже по силам — в статье <a href="s-kakogo-vozrasta-rebenku-sobirat-kompyuter.html">«С какого возраста ребёнку собирать компьютер»</a>, а что именно остаётся с ребёнком после курса — в статье <a href="chemu-uchitsya-rebenok-na-kursah-sborki-pk.html">«Чему ребёнок учится на курсах сборки ПК»</a>.</p>
+
+          <p><strong>Взрослому или подростку, который хочет свой компьютер</strong>, — формат <a href="/sobrat-pk-s-masterom-stavropol.html">совместной сборки с мастером</a>. Вы приходите со своими комплектующими (или подбираем и покупаем вместе) и за 3–6 часов собираете свою машину своими руками рядом с профессионалом — в спокойной обстановке, где подскажут на каждом шаге. Домой уходите с готовым работающим компьютером и пониманием, как он устроен. По деньгам это примерно как отдать сборку мастеру, только собираете вы сами. Это не «купить готовую коробку» — это собрать свой набор, как конструктор, и знать в нём каждый винт.</p>
+
+          <figure class="lesson-loop">
+            <video muted loop playsinline preload="none" data-lazy poster="../assets/video/hands_micro_poster.jpg" aria-label="Дети собирают компьютер на занятии в Ставрополе">
+              <source data-src="../assets/video/hands_micro.webm" type="video/webm">
+              <source data-src="../assets/video/hands_micro.mp4" type="video/mp4">
+            </video>
+            <figcaption>Так выглядит обычное занятие у нас в Ставрополе — руки в железе, а не в теории</figcaption>
+          </figure>
+
+          <p>И тем, и другим проще всего начать с одного бесплатного шага — прийти и посмотреть, как это происходит вживую. Записаться можно ниже: это ни к чему не обязывает, занимает час, а решение, идти дальше или нет, вы примете уже после того, как сами потрогаете железо.</p>
         </div>
 
         <section class="article-faq">
@@ -254,19 +415,25 @@
               <summary>Собрать ПК самому или купить готовый?</summary>
               <div class="faq-answer"><p>Самостоятельная сборка обычно выгоднее по цене и даёт контроль над каждым компонентом, а заодно — понимание того, как устроен компьютер. Готовый ПК удобнее, но в нём часто экономят на незаметных деталях.</p></div>
             </details>
+            <details class="faq-item">
+              <summary>Можно ли прийти и собрать свой компьютер вместе с мастером?</summary>
+              <div class="faq-answer"><p>Да. В Ставрополе у нас есть <a href="/sobrat-pk-s-masterom-stavropol.html">формат совместной сборки</a> для взрослых и подростков: вы приходите со своими комплектующими (или покупаете их у нас) и за 3–6 часов собираете свой компьютер своими руками рядом с профессионалом. Уходите домой с готовой рабочей машиной. По цене — примерно как отдать сборку мастеру, только собираете вы сами.</p></div>
+            </details>
           </div>
         </section>
 
         <div class="article-cta glass-card">
-          <h3>Хотите, чтобы ребёнок умел это сам?</h3>
-          <p>На формате «Собери КОМП Сам!» в Ставрополе ребёнок 7–17 лет собирает полноценный ПК своими руками и понимает каждую деталь. Начать можно с бесплатного пробного урока.</p>
+          <h3>Сделайте первый шаг — он бесплатный</h3>
+          <p>Лучший способ понять, ваше это или нет, — прийти и потрогать железо своими руками. Бесплатный пробный урок длится час и ни к чему не обязывает: для ребёнка 7–17 лет — на формате «Собери КОМП Сам!», а если хотите собрать <strong>свой</strong> компьютер — приходите на совместную сборку с мастером.</p>
           <a href="/#lesson" class="btn btn-primary btn-glow"><i data-lucide="gift"></i> Записаться на пробный урок</a>
+          <a href="/sobrat-pk-s-masterom-stavropol.html" class="btn btn-outline"><i data-lucide="wrench"></i> Собрать свой ПК с мастером</a>
           <a href="tel:+79034456444" class="btn btn-outline"><i data-lucide="phone"></i> 8-903-44-56-444</a>
         </div>
 
         <div class="article-related">
           <h2>Читайте также</h2>
           <ul>
+            <li><a href="/sobrat-pk-s-masterom-stavropol.html">Собрать ПК с мастером в Ставрополе — для взрослых и подростков</a></li>
             <li><a href="kak-vybrat-pervyy-kompyuter-rebenku.html">Как выбрать первый компьютер для ребёнка</a></li>
             <li><a href="s-kakogo-vozrasta-rebenku-sobirat-kompyuter.html">С какого возраста ребёнку собирать компьютер</a></li>
             <li><a href="chemu-uchitsya-rebenok-na-kursah-sborki-pk.html">Чему ребёнок учится на курсах сборки ПК</a></li>
@@ -317,6 +484,32 @@
     }
     var nav = document.getElementById("navbar");
     if (nav) { var onScroll = function () { if (window.scrollY > 20) nav.classList.add("scrolled"); else nav.classList.remove("scrolled"); }; window.addEventListener("scroll", onScroll); onScroll(); }
+
+    // Step animations: play when scrolled into view (once). No-JS → "ready" diagram stays visible.
+    var anims = document.querySelectorAll(".pc-anim");
+    if ("IntersectionObserver" in window && anims.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-playing"); io.unobserve(e.target); } });
+      }, { threshold: 0.4 });
+      anims.forEach(function (a) { io.observe(a); });
+    } else {
+      anims.forEach(function (a) { a.classList.add("is-playing"); });
+    }
+
+    // Lazy-load the real-lesson loop only when it nears the viewport.
+    var lv = document.querySelectorAll("video[data-lazy]");
+    var swap = function (v) {
+      v.querySelectorAll("source[data-src]").forEach(function (s) { s.src = s.dataset.src; s.removeAttribute("data-src"); });
+      try { v.load(); var p = v.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {}
+    };
+    if ("IntersectionObserver" in window && lv.length) {
+      var vo = new IntersectionObserver(function (entries, self) {
+        entries.forEach(function (e) { if (!e.isIntersecting) return; swap(e.target); self.unobserve(e.target); });
+      }, { rootMargin: "200px 0px", threshold: 0 });
+      lv.forEach(function (v) { vo.observe(v); });
+    } else {
+      lv.forEach(swap);
+    }
   })();
   </script>
 <script src="../js/metrika.js?v=20260606"></script>
