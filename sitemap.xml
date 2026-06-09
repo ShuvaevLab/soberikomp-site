@@ -14,13 +14,13 @@
   </url>
   <url>
     <loc>https://soberikompsam.ru/articles/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://soberikompsam.ru/articles/kak-sobrat-pk-samomu.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -53,5 +53,23 @@
     <lastmod>2026-06-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://soberikompsam.ru/articles/skolko-stoit-sobrat-pk.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soberikompsam.ru/articles/kak-sobrat-igrovoy-pk.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soberikompsam.ru/articles/iz-chego-sostoit-kompyuter.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
