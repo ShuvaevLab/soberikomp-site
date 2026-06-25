@@ -38,7 +38,7 @@
         "@type": ["LocalBusiness", "EducationalOrganization"],
         "@id": "https://soberikompsam.ru/#org",
         "name": "Собери КОМП Сам!",
-        "alternateName": "Курсы сборки ПК для детей",
+        "alternateName": ["Собери Комп Сам", "Собери КОМП Сам", "соберикомпсам", "собери комп", "SoberiKompSam", "Курсы сборки ПК для детей"],
         "url": "https://soberikompsam.ru/",
         "logo": "https://soberikompsam.ru/assets/logo-alt-no-bg.png",
         "image": "https://soberikompsam.ru/assets/og-image.png",
@@ -174,14 +174,12 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
 
-  <script defer src="https://unpkg.com/lucide@latest"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <script defer src="assets/vendor/lucide.min.js"></script>
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/interact.min.js"></script>
 
   <link rel="stylesheet" href="css/style.css?v=20260508e">
 </head>
@@ -190,7 +188,7 @@
   <canvas id="techCanvas" aria-hidden="true"></canvas>
   <div class="overlay" aria-hidden="true"></div>
 
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" aria-label="Основная навигация">
     <div class="container nav-content">
       <a href="#" class="logo logo-empty" aria-label="На главную"></a>
       <ul class="nav-links">
@@ -205,7 +203,7 @@
       <div class="nav-actions">
         <button class="theme-toggle-wrapper" id="themeToggleWrap" title="Сменить тему" aria-label="Переключить тему">
           <span class="theme-label" aria-hidden="true">🌙</span>
-          <div class="theme-toggle" id="themeToggle"></div>
+          <span class="theme-toggle" id="themeToggle"></span>
           <span class="theme-label" aria-hidden="true">☀️</span>
         </button>
         <a href="tel:+79034456444" class="btn btn-primary d-none-sm">
@@ -763,11 +761,9 @@
           </div>
         </div>
 
-        <a href="https://yandex.ru/profile/204999416830/" target="_blank" rel="noopener"
-           class="contacts-map glass-card gs-reveal"
-           aria-label="Открыть карточку «Собери КОМП Сам!» в Яндекс.Картах">
+        <div class="contacts-map glass-card gs-reveal">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=41.923189%2C45.008831&z=17&l=map&oid=204999416830"
+            data-src="https://yandex.ru/map-widget/v1/?ll=41.923189%2C45.008831&z=17&l=map&oid=204999416830"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             title="Карта Яндекс: «Собери КОМП Сам!» — ТЦ Милан, Ставрополь, ул. 50 лет ВЛКСМ, 28А"
             style="pointer-events: none;">
@@ -776,7 +772,10 @@
             <i data-lucide="external-link"></i>
             <span>ТЦ «Милан»<br><small>Ставрополь, ул. 50 лет ВЛКСМ, 28А</small></span>
           </div>
-        </a>
+          <a href="https://yandex.ru/profile/204999416830/" target="_blank" rel="noopener"
+             class="contacts-map-link"
+             aria-label="Открыть карточку «Собери КОМП Сам!» в Яндекс.Картах"></a>
+        </div>
       </div>
     </div>
   </section>
@@ -805,6 +804,22 @@
     </div>
   </footer>
 
+  <script>
+  /* Defer the external Yandex map widget until the contacts block nears the viewport.
+     Keeps initial page-load console clean (no third-party connection during load) and
+     improves LCP/TBT — the map loads only when the visitor actually scrolls to it. */
+  (function () {
+    var mf = document.querySelector(".contacts-map iframe[data-src]");
+    if (!mf) return;
+    var load = function () { mf.src = mf.dataset.src; mf.removeAttribute("data-src"); };
+    if ("IntersectionObserver" in window) {
+      var o = new IntersectionObserver(function (es, self) {
+        es.forEach(function (e) { if (e.isIntersecting) { load(); self.disconnect(); } });
+      }, { rootMargin: "300px 0px" });
+      o.observe(mf.closest(".contacts-map") || mf);
+    } else { load(); }
+  })();
+  </script>
   <script src="js/main.js?v=20260508e"></script>
 
   <!-- Яндекс.Метрика — общий счётчик для всех страниц (js/metrika.js) -->

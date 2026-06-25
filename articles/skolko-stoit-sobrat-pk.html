@@ -81,9 +81,7 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
@@ -99,14 +97,14 @@
     .budget-disclaimer{ margin:14px 0 0; padding-top:12px; border-top:1px dashed var(--glass-border); font-size:.95rem; }
   </style>
 
-  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="../assets/vendor/lucide.min.js"></script>
   <script>(function(){try{var t=localStorage.getItem("sks-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
 </head>
 <body>
   <canvas id="techCanvas" aria-hidden="true"></canvas>
   <div class="overlay" aria-hidden="true"></div>
 
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" aria-label="Основная навигация">
     <div class="container nav-content">
       <a href="/" class="logo logo-empty" aria-label="На главную"></a>
       <ul class="nav-links">
@@ -119,7 +117,7 @@
       <div class="nav-actions">
         <button class="theme-toggle-wrapper" id="themeToggleWrap" title="Сменить тему" aria-label="Переключить тему">
           <span class="theme-label" aria-hidden="true">🌙</span>
-          <div class="theme-toggle" id="themeToggle"></div>
+          <span class="theme-toggle" id="themeToggle"></span>
           <span class="theme-label" aria-hidden="true">☀️</span>
         </button>
         <a href="tel:+79034456444" class="btn btn-primary d-none-sm"><i data-lucide="phone"></i> Позвонить</a>
