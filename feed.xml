@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Собери КОМП Сам! — статьи о сборке ПК для детей</title>
+    <link>https://soberikompsam.ru/</link>
+    <description>Новые статьи курсов сборки и ремонта ПК для детей в Ставрополе: что учить, как выбрать, с какого возраста, нейросети на реальных задачах.</description>
+    <language>ru</language>
+    <lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0300</lastBuildDate>
+    <atom:link href="https://soberikompsam.ru/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Из чего состоит компьютер: все комплектующие простыми словами</title>
+      <link>https://soberikompsam.ru/articles/iz-chego-sostoit-kompyuter.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/iz-chego-sostoit-kompyuter.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Из чего состоит компьютер: процессор, материнская плата, оперативная память, SSD и HDD, видеокарта, блок питания, корпус и охлаждение — простыми словами, с понятными аналогиями. Какие комплектующие нужны для сборки ПК.</description>
+    </item>
+    <item>
+      <title>Как почистить компьютер от пыли: пошаговая инструкция</title>
+      <link>https://soberikompsam.ru/articles/kak-pochistit-kompyuter-ot-pyli.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kak-pochistit-kompyuter-ot-pyli.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Как почистить компьютер от пыли самому: чем чистить, как часто, что придерживать у вентиляторов и почему нельзя пылесос вплотную. Пошагово для настольного ПК плюс короткий блок про ноутбук — чтобы перестал греться и шуметь.</description>
+    </item>
+    <item>
+      <title>Как собрать игровой ПК: гайд по комплектующим и сборке</title>
+      <link>https://soberikompsam.ru/articles/kak-sobrat-igrovoy-pk.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kak-sobrat-igrovoy-pk.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Как собрать игровой ПК: какая видеокарта нужна для игр, как сбалансировать процессор и видеокарту, сколько ОЗУ, какой блок питания и охлаждение. Подбор под 1080p, 1440p и 4K, типичные ошибки новичка и ориентировочные бюджеты.</description>
+    </item>
+    <item>
+      <title>Как заменить термопасту на процессоре: пошаговая инструкция</title>
+      <link>https://soberikompsam.ru/articles/kak-zamenit-termopastu.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kak-zamenit-termopastu.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Как заменить термопасту на процессоре своими руками: когда менять, что понадобится, пошаговая замена на настольном ПК и отдельно про ноутбук, частые ошибки. Понятно даже новичку.</description>
+    </item>
+    <item>
+      <title>Компьютер не включается: причины и что делать</title>
+      <link>https://soberikompsam.ru/articles/kompyuter-ne-vklyuchaetsya.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kompyuter-ne-vklyuchaetsya.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Компьютер не включается — что делать: пошаговая диагностика от простого к сложному. Совсем нет питания, вентиляторы крутятся но нет изображения, включается и сразу выключается, пищит при старте. Спокойный порядок поиска причины своими руками.</description>
+    </item>
+    <item>
+      <title>Компьютер тормозит, греется и шумит: почему и что делать</title>
+      <link>https://soberikompsam.ru/articles/kompyuter-tormozit-i-greetsya.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kompyuter-tormozit-i-greetsya.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Компьютер тормозит, греется и шумит вентиляторами — разбираем причины по порядку: пыль и перегрев, высохшая термопаста, мало оперативной памяти, старый HDD вместо SSD, мусор в автозагрузке и вирусы. Что чинится бесплатно, что дешёвым апгрейдом, и когда пора собирать новый ПК.</description>
+    </item>
+    <item>
+      <title>Сколько стоит собрать ПК: из чего складывается цена и как не переплатить</title>
+      <link>https://soberikompsam.ru/articles/skolko-stoit-sobrat-pk.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/skolko-stoit-sobrat-pk.html</guid>
+      <pubDate>Tue, 09 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Сколько стоит собрать компьютер: от чего зависит цена, как распределить бюджет между узлами, на чём нельзя экономить и где можно, выгоднее ли собрать самому, чем купить готовый. Ориентиры по бюджетам и как узнать актуальную цену.</description>
+    </item>
+    <item>
+      <title>Как собрать ПК самому: пошаговая инструкция для новичка</title>
+      <link>https://soberikompsam.ru/articles/kak-sobrat-pk-samomu.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kak-sobrat-pk-samomu.html</guid>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Как собрать компьютер самому с нуля: пошаговая инструкция по сборке ПК — от выбора комплектующих и установки процессора до первого запуска и установки Windows. Понятно даже новичку.</description>
+    </item>
+    <item>
+      <title>Чему ребёнок учится на курсах сборки ПК</title>
+      <link>https://soberikompsam.ru/articles/chemu-uchitsya-rebenok-na-kursah-sborki-pk.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/chemu-uchitsya-rebenok-na-kursah-sborki-pk.html</guid>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Чему ребёнок реально учится на курсах сборки ПК: не только собирать детали, но и технические и жизненные навыки — внимание, диагностика, уверенность в технике. Разбор от практика.</description>
+    </item>
+    <item>
+      <title>Как выбрать первый компьютер для ребёнка</title>
+      <link>https://soberikompsam.ru/articles/kak-vybrat-pervyy-kompyuter-rebenku.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kak-vybrat-pervyy-kompyuter-rebenku.html</guid>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Как выбрать первый компьютер ребёнку: готовый ПК, ноутбук или сборка по частям, на чём нельзя экономить, как не переплатить за бренд и почему важно, чтобы ребёнок понимал устройство техники.</description>
+    </item>
+    <item>
+      <title>Компьютерные курсы для детей в Ставрополе: как выбрать</title>
+      <link>https://soberikompsam.ru/articles/kompyuternye-kursy-dlya-detey-stavropol.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/kompyuternye-kursy-dlya-detey-stavropol.html</guid>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Как выбрать компьютерные курсы для ребёнка в Ставрополе: на что смотреть кроме цены — формат, размер группы, работа с реальным железом и что останется у ребёнка после курса.</description>
+    </item>
+    <item>
+      <title>Программирование, робототехника или сборка ПК — что выбрать ребёнку</title>
+      <link>https://soberikompsam.ru/articles/programmirovanie-robototehnika-ili-sborka-pk.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/programmirovanie-robototehnika-ili-sborka-pk.html</guid>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 +0300</pubDate>
+      <description>Чем программирование, робототехника и сборка ПК отличаются для ребёнка, что каждое направление развивает и почему это не конкуренты, а разные навыки. Разбор от практика.</description>
+    </item>
+    <item>
+      <title>С какого возраста ребёнку собирать компьютер</title>
+      <link>https://soberikompsam.ru/articles/s-kakogo-vozrasta-rebenku-sobirat-kompyuter.html</link>
+      <guid isPermaLink="true">https://soberikompsam.ru/articles/s-kakogo-vozrasta-rebenku-sobirat-kompyuter.html</guid>
+      <pubDate>Fri, 05 Jun 2026 00:00:00 +0300</pubDate>
+      <description>С какого возраста ребёнок может собирать компьютер: что реально по силам в 7, 10 и 14 лет, почему важна работа руками и как устроена спиральная программа курса в Ставрополе.</description>
+    </item>
+  </channel>
+</rss>
